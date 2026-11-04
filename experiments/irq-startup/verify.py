@@ -9,6 +9,10 @@ def verify(image,s):
  addr=lambda x:x.to_bytes(3,'little')
  clear=b'\x21'+addr(start)+b'\x11'+addr(start+1)+b'\x01'+addr(length-1)+b'\x36\x00\xcd'+addr(s['ldir_handle_zerolen'])
  call=b'\xcd'+addr(end)
+ helper=image[end:s['_set_vector']]
+ fill=b'\x21'+addr(table)+b'\x11'+addr(table+4)+b'\x01'+addr(188)+b'\xed\xb0'
+ seed=b'\x21'+addr(s['__default_mi_handler'])+b'\x3e\xc3\x32'+addr(table)+b'\x22'+addr(table+1)
+ assert helper.count(seed)==1 and helper.count(fill)==1,'Expected all48 default JP slots to be seeded/filled'
  assert code.count(clear)==1,'Expected exactly one final BSS clear'
  assert code.count(call)==1,'Expected exactly one default initialization'
  assert code.index(call)==code.index(clear)+len(clear),'Defaults must follow final BSS clear'
@@ -18,9 +22,10 @@ def mutations(image,s):
  good=verify(image,s);a=good['init_call'];b=good['clear_address'];call=image[a:a+4];out=[]
  candidates={
   'missing-call':image[:a]+b'\0'*4+image[a+4:],
-  'early-call':image[:b]+call+image[b+4:a]+b'\0'*4+image[a+4:],
+  'early-call':image[:s['__init']]+call+image[s['__init']+4:a]+b'\0'*4+image[a+4:],
   'duplicate-call':image[:s['__init']]+call+image[s['__init']+4:],
-  'malformed-clear':image[:b]+b'\0'+image[b+1:]
+  'malformed-clear':image[:b]+b'\0'+image[b+1:],
+  'short-default-fill':image[:s['__init_default_vectors']]+image[s['__init_default_vectors']:].replace(b'\x01\xbc\x00\x00\xed\xb0',b'\x01\xb8\x00\x00\xed\xb0',1)
  }
  for name,data in candidates.items():
   try:verify(data,s)
