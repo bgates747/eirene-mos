@@ -1,0 +1,25 @@
+.assume adl=1
+.text
+include "src/identity.inc"
+.global _rom_byte0,_irq_di,_irq_ei,_irq_stub,_irq_warm_reset
+_rom_byte0:
+ ld a,(0)
+ ret
+_irq_di:
+ di
+ ret
+_irq_ei:
+ ei
+ ret
+_irq_stub:
+ ei
+ reti.l
+_irq_warm_reset:
+ di
+ ; Poison only the IRQ table; preserve the adjacent warmboot magic.
+ ld hl,IRQ_TABLE
+ ld de,IRQ_TABLE+1
+ ld bc,191
+ ld (hl),0xa5
+ ldir
+ jp.lil 0
