@@ -5,6 +5,7 @@ root=Path(__file__).resolve().parents[2];base=root/'build/tm001';build=base/sys.
 h=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();runtime=out/'runtime';shutil.copytree(base/'perf-flexe002/runtime',runtime)
 for n,pin in {'flexe-agon-emulator.bin':'7e7d0e1bc89af72bde7ffbd6c06446aaefda4d1803f89eb1faf3167307ee1e01','flexe-vdp.so':'0866265bd6f3d73ad572f31dc1bb954f308ed9a5d857efa9414d37e1ade13374','esp32-firmware.bin':'201ad8ab4af807c261cb92634286b2fbaedcf3879f140e820b60ab54cf707e2a'}.items():assert h(runtime/n)==pin
 spec=importlib.util.spec_from_file_location('factory',root.parent/'agon-dev-env/scripts/setup_emulator.py');factory=importlib.util.module_from_spec(spec);spec.loader.exec_module(factory)
+preflight_spec=importlib.util.spec_from_file_location('preflight',Path(sys.argv[3]));preflight=importlib.util.module_from_spec(preflight_spec);preflight_spec.loader.exec_module(preflight)
 template=root.parent/'agon-mos/.emulator/uart0-completion-jit-final';rows=[]
 for kind in ('startup-original','startup-fixed','uart','perf'):
  firmware=base/'rc2-001/firmware' if kind=='startup-original' else build/'fixed'
@@ -24,7 +25,7 @@ for kind in ('startup-original','startup-fixed','uart','perf'):
   else:
    put(build/'perf/bin/rc2.bin','irq/rc2.bin');put(build/'perf/checks.bin','irq/checks.bin');commands='rc2\r\n'
   a=p/'autoexec.txt';a.write_bytes(('CD /irq\r\n'+commands+'DIR\r\nECHO IRQ001 CLI RETURN\r\n').encode());put(a,'autoexec.txt');(p/'sdcard.img').symlink_to('card.img');factory.name_flexe_profile(p)
-  factory.verify_profile_executables(p/'flexe-agon-emulator',p/'flexe-agon-emulator.bin')
+  preflight.verify_profile_executables(p/'flexe-agon-emulator',p/'flexe-agon-emulator.bin')
   (p/'.runtime.sha256').write_text(''.join(h(p/n)+'  '+n+'\n' for n in (*files,'mos_platform.bin','mos_platform.map','flexe-agon-emulator')))
   rows.append(dict(path=str(p),kind=kind,engine=engine,MOS_sha256=h(p/'mos_platform.bin'),probe_build=info['probe_build'],physical=False))
 (out/'profiles.json').write_text(json.dumps(dict(build=str(build),profiles=rows),indent=2)+'\n');print(out)
