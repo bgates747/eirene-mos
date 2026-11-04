@@ -72,8 +72,15 @@ stop. One controlled cold/warm pair per startup cell; two UART regression
 invocations and one C example per functional cell; nine existing PERF2 trials
 per performance cell. No physical target or SD writes are started automatically.
 
-Completed owner work: [qualification and remaining physical gate](qualification.md).
-The Console8 appliance is now deployed; see [deployment](deployment.md) and
-[the exact on-card guide](deployed-readme.txt). Physical execution is pending. A real EMOS installation independently
-corroborates this mechanism, but is not substituted for that exact-image gate.
+Completed owner work: [model qualification](qualification.md) and
+[successful Console8 before/after results](hardware-results.md). The exact-image
+physical gate is complete. Deployment and protocol remain recorded in
+[deployment](deployment.md) and [the on-card guide](deployed-readme.txt).
+The independent EMOS installation provides additional corroboration.
 No upstream message, PR, release/tag replacement or main-branch merge occurred.
+
+IRQ-009 [x] Archive and validate the Author-run Console8 before/after campaign.
+Confirm all four startup reports, both UART regressions and all nine PERF2
+trials; preserve raw files and unchanged deployed inputs. Record the unlogged
+example separately from instrumented evidence. No upstream notification or
+release promotion is implied by closing this hardware gate.

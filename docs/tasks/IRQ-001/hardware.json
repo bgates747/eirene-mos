@@ -1,0 +1,342 @@
+{
+  "passed": true,
+  "physical": true,
+  "board": "Heber Agon Console8",
+  "firmware_source": "42a96cd397c1b0f8bbd0cb479a004aa36a48956d",
+  "baseline_source": "825eaf77176247f5b5ba2f940ae73fcace34e7e5",
+  "reports": [
+    {
+      "file": "before/I0060.log",
+      "kind": "startup",
+      "phase": "cold",
+      "hardReset": 1,
+      "ROM_crc32": "9E08D539",
+      "slots": 48,
+      "default_slots_zero": 45,
+      "vector_roundtrips": 0,
+      "expected_outcome_verified": true,
+      "sha256": "8d079321c547bb8eb8694525f01ccd4c44921a0d3703c7c27b7370c8e2b3d51a"
+    },
+    {
+      "file": "before/I0061.log",
+      "kind": "startup",
+      "phase": "warm-poisoned",
+      "hardReset": 0,
+      "ROM_crc32": "9E08D539",
+      "slots": 48,
+      "default_slots_zero": 45,
+      "vector_roundtrips": 0,
+      "expected_outcome_verified": true,
+      "sha256": "3162cf05e92070c6379983d0b6f6dae5772308a51c4241d3d12e45f46800a022"
+    },
+    {
+      "file": "after/I0062.log",
+      "kind": "startup",
+      "phase": "cold",
+      "hardReset": 1,
+      "ROM_crc32": "DBE3E21E",
+      "slots": 48,
+      "default_slots_zero": 0,
+      "vector_roundtrips": 48,
+      "expected_outcome_verified": true,
+      "sha256": "32ef34013715ec610c2286b5fcb45f9deb22d0b2e2f183fb9192fd526352b4d6"
+    },
+    {
+      "file": "after/I0063.log",
+      "kind": "startup",
+      "phase": "warm-poisoned",
+      "hardReset": 0,
+      "ROM_crc32": "DBE3E21E",
+      "slots": 48,
+      "default_slots_zero": 0,
+      "vector_roundtrips": 48,
+      "expected_outcome_verified": true,
+      "sha256": "36bb52c5c23d488d214f49073458df801f287f64f1380b3767164ceb2acea46b"
+    },
+    {
+      "file": "after/R0064.log",
+      "kind": "UART functional",
+      "receiver_bytes": 8192,
+      "passed": true,
+      "sha256": "7df197d618d048ce562a13f70a46067a3713cbed6de8a931272f015995982c33"
+    },
+    {
+      "file": "after/R0065.log",
+      "kind": "UART functional",
+      "receiver_bytes": 8192,
+      "passed": true,
+      "sha256": "7df197d618d048ce562a13f70a46067a3713cbed6de8a931272f015995982c33"
+    },
+    {
+      "file": "after/R0066.log",
+      "kind": "PERF2",
+      "receiver_bytes": 73728,
+      "trials": 9,
+      "passed": true,
+      "sha256": "5d8dce60513eadb42411adb38764819b7adfe3d76cd3f4e057059c838f2001a2"
+    }
+  ],
+  "slot_observations": 192,
+  "fixed_install_restore_pairs": 96,
+  "verified_payload_bytes": 90112,
+  "performance_trials": 9,
+  "missed_deadlines": 0,
+  "summary": {
+    "bulk-only": {
+      "payload_Bps": 106256.64583685188,
+      "work_steps_per_second": null,
+      "foreground_compute_remaining_percent": null,
+      "sending_cost_percent": null,
+      "work_measurement": "disabled by scenario design",
+      "missed": 0
+    },
+    "paced-plus-work": {
+      "payload_Bps": 44075.92288148259,
+      "work_steps_per_second": 11659.243760274996,
+      "foreground_compute_remaining_percent": 86.08008139183518,
+      "sending_cost_percent": 13.91991860816482,
+      "work_measurement": "enabled",
+      "missed": 0
+    },
+    "bulk-plus-work": {
+      "payload_Bps": 106245.87949202918,
+      "work_steps_per_second": 11646.58200486355,
+      "foreground_compute_remaining_percent": 85.9865997768359,
+      "sending_cost_percent": 14.013400223164098,
+      "work_measurement": "enabled",
+      "missed": 0
+    }
+  },
+  "parsed_PERF2": {
+    "build": "1c6252432c15c978",
+    "case": "irq-startup-fix",
+    "config": {
+      "transport": 1,
+      "tick_hz": 1152000,
+      "wall_hz": 72000,
+      "payload": 8192,
+      "wire": 8448,
+      "window": 213996,
+      "work_steps": 1
+    },
+    "mos_bytes": 100950,
+    "mos_crc32": 3689144862,
+    "calibration": {
+      "ticks": 214076,
+      "wall": 13382,
+      "work": 2517,
+      "state": 1977211094
+    },
+    "trials": [
+      {
+        "rep": 1,
+        "scenario": 0,
+        "ticks": 88815,
+        "wall": 5553,
+        "call": 112,
+        "source_observed": 88644,
+        "fence": 314,
+        "work": 0,
+        "credited": 0,
+        "state": 305419896,
+        "late": 0,
+        "missed": 0,
+        "callbacks": 1,
+        "payload_Bps": 106256.64583685188,
+        "wire_Bps": 109577.1660192535,
+        "work_per_second": 0.0,
+        "foreground_capacity_fraction": 0.0
+      },
+      {
+        "rep": 1,
+        "scenario": 1,
+        "ticks": 214112,
+        "wall": 13385,
+        "call": 3572,
+        "source_observed": 210224,
+        "fence": 307,
+        "work": 2167,
+        "credited": 2167,
+        "state": 2308688662,
+        "late": 109,
+        "missed": 0,
+        "callbacks": 32,
+        "payload_Bps": 44075.92288148259,
+        "wire_Bps": 45453.295471528916,
+        "work_per_second": 11659.243760274996,
+        "foreground_capacity_fraction": 0.8608008139183517
+      },
+      {
+        "rep": 1,
+        "scenario": 2,
+        "ticks": 88660,
+        "wall": 5544,
+        "call": 112,
+        "source_observed": 88501,
+        "fence": 330,
+        "work": 897,
+        "credited": 896,
+        "state": 388568292,
+        "late": 0,
+        "missed": 0,
+        "callbacks": 1,
+        "payload_Bps": 106442.40920369953,
+        "wire_Bps": 109768.73449131513,
+        "work_per_second": 11642.138506654635,
+        "foreground_capacity_fraction": 0.8595379347349819
+      },
+      {
+        "rep": 2,
+        "scenario": 1,
+        "ticks": 214112,
+        "wall": 13385,
+        "call": 3573,
+        "source_observed": 210224,
+        "fence": 321,
+        "work": 2167,
+        "credited": 2167,
+        "state": 2308688662,
+        "late": 108,
+        "missed": 0,
+        "callbacks": 32,
+        "payload_Bps": 44075.92288148259,
+        "wire_Bps": 45453.295471528916,
+        "work_per_second": 11659.243760274996,
+        "foreground_capacity_fraction": 0.8608008139183517
+      },
+      {
+        "rep": 2,
+        "scenario": 2,
+        "ticks": 88824,
+        "wall": 5554,
+        "call": 112,
+        "source_observed": 88665,
+        "fence": 314,
+        "work": 899,
+        "credited": 898,
+        "state": 1296699523,
+        "late": 0,
+        "missed": 0,
+        "callbacks": 1,
+        "payload_Bps": 106245.87949202918,
+        "wire_Bps": 109566.06322615509,
+        "work_per_second": 11646.58200486355,
+        "foreground_capacity_fraction": 0.859865997768359
+      },
+      {
+        "rep": 2,
+        "scenario": 0,
+        "ticks": 88797,
+        "wall": 5553,
+        "call": 111,
+        "source_observed": 88662,
+        "fence": 299,
+        "work": 0,
+        "credited": 0,
+        "state": 305419896,
+        "late": 0,
+        "missed": 0,
+        "callbacks": 1,
+        "payload_Bps": 106278.18507382006,
+        "wire_Bps": 109599.37835737693,
+        "work_per_second": 0.0,
+        "foreground_capacity_fraction": 0.0
+      },
+      {
+        "rep": 3,
+        "scenario": 2,
+        "ticks": 88824,
+        "wall": 5554,
+        "call": 111,
+        "source_observed": 88665,
+        "fence": 314,
+        "work": 899,
+        "credited": 898,
+        "state": 1296699523,
+        "late": 0,
+        "missed": 0,
+        "callbacks": 1,
+        "payload_Bps": 106245.87949202918,
+        "wire_Bps": 109566.06322615509,
+        "work_per_second": 11646.58200486355,
+        "foreground_capacity_fraction": 0.859865997768359
+      },
+      {
+        "rep": 3,
+        "scenario": 0,
+        "ticks": 89720,
+        "wall": 5611,
+        "call": 112,
+        "source_observed": 89585,
+        "fence": 330,
+        "work": 0,
+        "credited": 0,
+        "state": 305419896,
+        "late": 0,
+        "missed": 0,
+        "callbacks": 1,
+        "payload_Bps": 105184.84172982612,
+        "wire_Bps": 108471.86803388319,
+        "work_per_second": 0.0,
+        "foreground_capacity_fraction": 0.0
+      },
+      {
+        "rep": 3,
+        "scenario": 1,
+        "ticks": 214112,
+        "wall": 13385,
+        "call": 3576,
+        "source_observed": 210224,
+        "fence": 322,
+        "work": 2167,
+        "credited": 2167,
+        "state": 2308688662,
+        "late": 107,
+        "missed": 0,
+        "callbacks": 32,
+        "payload_Bps": 44075.92288148259,
+        "wire_Bps": 45453.295471528916,
+        "work_per_second": 11659.243760274996,
+        "foreground_capacity_fraction": 0.8608008139183517
+      }
+    ]
+  },
+  "previous_TRIM_context": {
+    "bulk-only": {
+      "payload_rate_change_percent": 0.04954118110678252,
+      "work_rate_change_percent": null
+    },
+    "paced-plus-work": {
+      "payload_rate_change_percent": 0.0023352264235665388,
+      "work_rate_change_percent": 0.0023352264235443343
+    },
+    "bulk-plus-work": {
+      "payload_rate_change_percent": 0.0,
+      "work_rate_change_percent": -0.0011258218499454742
+    }
+  },
+  "report_counters": {
+    "before": 62,
+    "after": 67
+  },
+  "all_deployed_firmware_apps_unchanged": true,
+  "VDP": {
+    "name": "Stock Bistromathics 2.16.0",
+    "basis": "Prescribed protocol and Author report that tests are complete",
+    "independently_fingerprinted": false
+  },
+  "example": {
+    "basis": "Author overall completion report; app writes no report",
+    "independently_logged": false
+  },
+  "archive_sha256": "d99eae263c7ebe007c41e453494eb0f007c246a3df6d82d87212367a77531aef",
+  "card_modified": false,
+  "upstream_notified": false,
+  "release_promoted": false,
+  "limitations": [
+    "The previous TRIM benchmark was an earlier session, not a newly matched speed comparison.",
+    "Foreground capacity is a calculation-overlap proxy, not direct exclusive CPU profiling.",
+    "Default-table reads and setintvector roundtrips are not peripheral IRQ stress.",
+    "No hardware wire capture or independent VDP identity/example transcript was recorded."
+  ]
+}

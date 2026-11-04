@@ -1,0 +1,153 @@
+{
+  "volume": {
+    "source": "/dev/sda1",
+    "target": "/run/media/smith/AGONC8",
+    "label": "AGONC8",
+    "uuid": "8658-1C23",
+    "fstype": "vfat"
+  },
+  "source": "/run/media/smith/AGONC8/test/mos-uart0",
+  "files": {
+    "SHA256SUMS": {
+      "bytes": 1964,
+      "sha256": "e572482448969ab4126c66ab580fb973b3d3000750b4d26c722115b765e16daa"
+    },
+    "after/I0062.log": {
+      "bytes": 2679,
+      "sha256": "32ef34013715ec610c2286b5fcb45f9deb22d0b2e2f183fb9192fd526352b4d6"
+    },
+    "after/I0063.log": {
+      "bytes": 2688,
+      "sha256": "36bb52c5c23d488d214f49073458df801f287f64f1380b3767164ceb2acea46b"
+    },
+    "after/R0064.log": {
+      "bytes": 660,
+      "sha256": "7df197d618d048ce562a13f70a46067a3713cbed6de8a931272f015995982c33"
+    },
+    "after/R0065.log": {
+      "bytes": 660,
+      "sha256": "7df197d618d048ce562a13f70a46067a3713cbed6de8a931272f015995982c33"
+    },
+    "after/R0066.log": {
+      "bytes": 3840,
+      "sha256": "5d8dce60513eadb42411adb38764819b7adfe3d76cd3f4e057059c838f2001a2"
+    },
+    "after/checks.bin": {
+      "bytes": 122880,
+      "sha256": "e1e9fccd360487bb18f6efbc66c944aaa3ba081e7b4676cbb6d95cbd7c89ad34"
+    },
+    "after/example.bin": {
+      "bytes": 8338,
+      "sha256": "0fe1241e1356da9e8be2b8f3f41e6eadece590ab3b7c99a4ebb6dc6afeb83f31"
+    },
+    "after/irqcheck.bin": {
+      "bytes": 13697,
+      "sha256": "84e64e3472c3ee6f66e3d4ec08f01957c363f270a6fb0ad174be9447dfb015f0"
+    },
+    "after/next.txt": {
+      "bytes": 4,
+      "sha256": "cfb492d64a4192ca7080f7a3988cbc4931613edfef7df50ea54db10312476391"
+    },
+    "after/perf.bin": {
+      "bytes": 24951,
+      "sha256": "79b5b2a9ef470f156ff5ce473cfd4f4a3886e3101d7644b318e1cf6692a6dc3e"
+    },
+    "after/phase.txt": {
+      "bytes": 1,
+      "sha256": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+    },
+    "after/runs.log": {
+      "bytes": 283,
+      "sha256": "cb72c5ada00b37cc8826a1fe5bf1603f0351c047779b8fc0d4c3b64b8b8e9d46"
+    },
+    "after/test.bin": {
+      "bytes": 24313,
+      "sha256": "9fd7496b155b1693138f13d4bedd56be40b1aa47ac14465a4942b869af82184b"
+    },
+    "before/I0060.log": {
+      "bytes": 2781,
+      "sha256": "8d079321c547bb8eb8694525f01ccd4c44921a0d3703c7c27b7370c8e2b3d51a"
+    },
+    "before/I0061.log": {
+      "bytes": 2790,
+      "sha256": "3162cf05e92070c6379983d0b6f6dae5772308a51c4241d3d12e45f46800a022"
+    },
+    "before/irqcheck.bin": {
+      "bytes": 13697,
+      "sha256": "84e64e3472c3ee6f66e3d4ec08f01957c363f270a6fb0ad174be9447dfb015f0"
+    },
+    "before/next.txt": {
+      "bytes": 4,
+      "sha256": "b5d332a592d07d36130e147b16a4ceb44935822bfdad79e4fe58f729aa4d036c"
+    },
+    "before/phase.txt": {
+      "bytes": 1,
+      "sha256": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+    },
+    "deployment.json": {
+      "bytes": 440,
+      "sha256": "bf9b15db7f6a7c88857dd8fcebb1897303b08fd27c7cd42520dfd73a21ab9200"
+    },
+    "licenses/CREDITS.txt": {
+      "bytes": 1400,
+      "sha256": "b8edb70f8f0bbde603f3a5dfb748a970b5c54d3af16dd08d349fed19f0dee1bc"
+    },
+    "licenses/DIAGNOSTIC-VDP-LICENSE.txt": {
+      "bytes": 1069,
+      "sha256": "fae2cacdc47dc5ed8efbd052201834108167942f0b524b8238327e9fbe13fd25"
+    },
+    "licenses/EIRENE-MOS-LICENSE.txt": {
+      "bytes": 1069,
+      "sha256": "fae2cacdc47dc5ed8efbd052201834108167942f0b524b8238327e9fbe13fd25"
+    },
+    "licenses/ESP-IDF-LICENSE": {
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    "licenses/MOS-LICENSE.txt": {
+      "bytes": 1069,
+      "sha256": "fae2cacdc47dc5ed8efbd052201834108167942f0b524b8238327e9fbe13fd25"
+    },
+    "licenses/RX-FIX-CREDITS.txt": {
+      "bytes": 817,
+      "sha256": "b236bf837922ae619bcb7d124c5fce2b204e3f32c234887641bbd52169ca744d"
+    },
+    "licenses/TEST-LICENSE.txt": {
+      "bytes": 1065,
+      "sha256": "0db98d06c58378ac21408c94149b1b675c44a8ebff8a32cb8fb875c9ed033bf3"
+    },
+    "licenses/VDP-LICENSE.txt": {
+      "bytes": 1069,
+      "sha256": "fae2cacdc47dc5ed8efbd052201834108167942f0b524b8238327e9fbe13fd25"
+    },
+    "mos-before.bin": {
+      "bytes": 100950,
+      "sha256": "a47130d78b70fa1e0e54aa61e4340831036d766a0c59e2738935bd9d04b94a3a"
+    },
+    "mos-fixed.bin": {
+      "bytes": 100950,
+      "sha256": "4550f60e74bb7be7d99e4fd1acaddaf9ac43d5b02a242fadee60c6e92aec30dc"
+    },
+    "mos-stock.bin": {
+      "bytes": 108490,
+      "sha256": "d564243283972690933a4554296ad6202ca4ef54572279533a942960846bebae"
+    },
+    "readme.txt": {
+      "bytes": 2996,
+      "sha256": "6909f4123f6a79d19b90fb39d612803d8f0d61a29745d1fe7aaed04858052333"
+    },
+    "runs.log": {
+      "bytes": 144,
+      "sha256": "cc906ca296ec1a82c2a74f73a376d2dd449e0ac09439f73572fbf19f0b177ab9"
+    },
+    "vdp-stock.bin": {
+      "bytes": 1077840,
+      "sha256": "b807beef35823b13a0a056f11b7464cd1b1c6356dce0e4098b78ebe059ded35f"
+    }
+  },
+  "archive_sha256": "d99eae263c7ebe007c41e453494eb0f007c246a3df6d82d87212367a77531aef",
+  "archive_members_verified": 34,
+  "card_unchanged": true,
+  "card_writes": false,
+  "physical_operations": false
+}

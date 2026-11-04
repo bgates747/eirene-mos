@@ -118,3 +118,12 @@ runs the corrected UART fixture twice, example and all PERF2 trials. It does
 not modify root startup, deploy to SD, flash hardware or launch a test itself.
 All physical actions remain the Author's. Upstream contact, a PR and release
 promotion remain deferred pending this evidence review/physical gate.
+
+## Subsequent Console8 gate completed
+
+The Author completed the deployed protocol. [Returned hardware evidence](hardware-results.md)
+reproduces the original defect on cold/warm starts and verifies the correction
+on both paths, all 48 slots, 96 total install/restore pairs, two UART
+regressions and nine PERF2 trials. The earlier pending statements above describe
+the model-qualification boundary; that exact-image hardware gate is now closed.
+Upstream contact and release changes remain outside this completed task.
