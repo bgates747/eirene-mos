@@ -73,7 +73,7 @@ invocations and one C example per functional cell; nine existing PERF2 trials
 per performance cell. No physical target or SD writes are started automatically.
 
 Completed owner work: [qualification and remaining physical gate](qualification.md).
-The prepared Console8 procedure is [hardware.txt](hardware.txt); it has not
-been deployed or executed on Console8. A real EMOS installation independently
+The Console8 appliance is now deployed; see [deployment](deployment.md) and
+[the exact on-card guide](deployed-readme.txt). Physical execution is pending. A real EMOS installation independently
 corroborates this mechanism, but is not substituted for that exact-image gate.
 No upstream message, PR, release/tag replacement or main-branch merge occurred.
