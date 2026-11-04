@@ -1,0 +1,152 @@
+{
+  "source_commit": "42a96cd397c1b0f8bbd0cb479a004aa36a48956d",
+  "baseline_source": "825eaf77176247f5b5ba2f940ae73fcace34e7e5",
+  "code_change": {
+    "changed_sources": [
+      "init.asm"
+    ],
+    "changed_objects": [
+      "init.o"
+    ],
+    "image_bytes_before": 100950,
+    "image_bytes_after": 100950,
+    "size_delta": 0,
+    "changed_image_bytes": 39,
+    "changed_range_inclusive": [
+      "0x6e2",
+      "0x70d"
+    ],
+    "sender_unchanged": true
+  },
+  "original_crc32": "9E08D539",
+  "fixed_crc32": "DBE3E21E",
+  "original_sha256": "a47130d78b70fa1e0e54aa61e4340831036d766a0c59e2738935bd9d04b94a3a",
+  "fixed_sha256": "4550f60e74bb7be7d99e4fd1acaddaf9ac43d5b02a242fadee60c6e92aec30dc",
+  "model": {
+    "cells": [
+      {
+        "path": "/home/smith/Agon/mystuff/eirene-mos-rc1/build/tm001/irq001-runtime002/startup-original-jit",
+        "kind": "startup-original",
+        "engine": "jit",
+        "MOS_sha256": "a47130d78b70fa1e0e54aa61e4340831036d766a0c59e2738935bd9d04b94a3a",
+        "probe_build": "211dd795b858547a",
+        "physical": false,
+        "passed": true,
+        "error": null,
+        "elapsed": 12.17323747498449,
+        "receiver_bytes": 0
+      },
+      {
+        "path": "/home/smith/Agon/mystuff/eirene-mos-rc1/build/tm001/irq001-runtime002/startup-original-interp",
+        "kind": "startup-original",
+        "engine": "interp",
+        "MOS_sha256": "a47130d78b70fa1e0e54aa61e4340831036d766a0c59e2738935bd9d04b94a3a",
+        "probe_build": "211dd795b858547a",
+        "physical": false,
+        "passed": true,
+        "error": null,
+        "elapsed": 12.601219888019841,
+        "receiver_bytes": 0
+      },
+      {
+        "path": "/home/smith/Agon/mystuff/eirene-mos-rc1/build/tm001/irq001-runtime002/startup-fixed-jit",
+        "kind": "startup-fixed",
+        "engine": "jit",
+        "MOS_sha256": "4550f60e74bb7be7d99e4fd1acaddaf9ac43d5b02a242fadee60c6e92aec30dc",
+        "probe_build": "211dd795b858547a",
+        "physical": false,
+        "passed": true,
+        "error": null,
+        "elapsed": 12.080866139003774,
+        "receiver_bytes": 0
+      },
+      {
+        "path": "/home/smith/Agon/mystuff/eirene-mos-rc1/build/tm001/irq001-runtime002/startup-fixed-interp",
+        "kind": "startup-fixed",
+        "engine": "interp",
+        "MOS_sha256": "4550f60e74bb7be7d99e4fd1acaddaf9ac43d5b02a242fadee60c6e92aec30dc",
+        "probe_build": "211dd795b858547a",
+        "physical": false,
+        "passed": true,
+        "error": null,
+        "elapsed": 12.587812506011687,
+        "receiver_bytes": 0
+      },
+      {
+        "path": "/home/smith/Agon/mystuff/eirene-mos-rc1/build/tm001/irq001-runtime002/uart-jit",
+        "kind": "uart",
+        "engine": "jit",
+        "MOS_sha256": "4550f60e74bb7be7d99e4fd1acaddaf9ac43d5b02a242fadee60c6e92aec30dc",
+        "probe_build": "211dd795b858547a",
+        "physical": false,
+        "passed": true,
+        "error": null,
+        "elapsed": 20.113198525999906,
+        "receiver_bytes": 16384
+      },
+      {
+        "path": "/home/smith/Agon/mystuff/eirene-mos-rc1/build/tm001/irq001-runtime002/uart-interp",
+        "kind": "uart",
+        "engine": "interp",
+        "MOS_sha256": "4550f60e74bb7be7d99e4fd1acaddaf9ac43d5b02a242fadee60c6e92aec30dc",
+        "probe_build": "211dd795b858547a",
+        "physical": false,
+        "passed": true,
+        "error": null,
+        "elapsed": 26.658173236006405,
+        "receiver_bytes": 16384
+      },
+      {
+        "path": "/home/smith/Agon/mystuff/eirene-mos-rc1/build/tm001/irq001-runtime002/perf-jit",
+        "kind": "perf",
+        "engine": "jit",
+        "MOS_sha256": "4550f60e74bb7be7d99e4fd1acaddaf9ac43d5b02a242fadee60c6e92aec30dc",
+        "probe_build": "211dd795b858547a",
+        "physical": false,
+        "passed": true,
+        "error": null,
+        "elapsed": 32.839142694021575,
+        "receiver_bytes": 73728
+      },
+      {
+        "path": "/home/smith/Agon/mystuff/eirene-mos-rc1/build/tm001/irq001-runtime002/perf-interp",
+        "kind": "perf",
+        "engine": "interp",
+        "MOS_sha256": "4550f60e74bb7be7d99e4fd1acaddaf9ac43d5b02a242fadee60c6e92aec30dc",
+        "probe_build": "211dd795b858547a",
+        "physical": false,
+        "passed": true,
+        "error": null,
+        "elapsed": 63.13326983299339,
+        "receiver_bytes": 73728
+      }
+    ],
+    "all_passed": true,
+    "startup_reports": 8,
+    "slot_observations": 384,
+    "fixed_install_restore_pairs": 192,
+    "functional_invocations": 4,
+    "c_examples": 2,
+    "PERF2_trials": 18,
+    "verified_payload_bytes": 180224,
+    "drops_overruns_backend_faults": 0,
+    "precise_interrupts": true
+  },
+  "archive": {
+    "path": "build/tm001/irq001-evidence.tar.gz",
+    "sha256": "3719475b944cf9bf1841d68b306f8e6e760889ed8c089d0a7793eaf457ddd9ea",
+    "members_verified": 878,
+    "Pi_and_Oryx_match": true
+  },
+  "lease": {
+    "generation": 256,
+    "released": true,
+    "next_request": null
+  },
+  "physical": {
+    "Extender_EMOS_normal_boot_full_ROM_verified": true,
+    "exact_regular_Eirene_Console8_pending": true
+  },
+  "upstream_notified": false,
+  "published_release_changed": false
+}

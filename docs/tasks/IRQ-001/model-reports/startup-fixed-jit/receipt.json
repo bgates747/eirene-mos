@@ -1,0 +1,12 @@
+{
+  "path": "/home/smith/Agon/mystuff/eirene-mos-rc1/build/tm001/irq001-runtime002/startup-fixed-jit",
+  "kind": "startup-fixed",
+  "engine": "jit",
+  "MOS_sha256": "4550f60e74bb7be7d99e4fd1acaddaf9ac43d5b02a242fadee60c6e92aec30dc",
+  "probe_build": "211dd795b858547a",
+  "physical": false,
+  "passed": true,
+  "error": null,
+  "elapsed": 12.080866139003774,
+  "receiver_bytes": 0
+}

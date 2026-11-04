@@ -1,0 +1,77 @@
+{
+  "source_commit": "42a96cd397c1b0f8bbd0cb479a004aa36a48956d",
+  "baseline_source": "825eaf77176247f5b5ba2f940ae73fcace34e7e5",
+  "changes": [
+    "init.asm"
+  ],
+  "changed_objects": [
+    "init.o"
+  ],
+  "rebuild_identical": true,
+  "bytes": 100950,
+  "baseline_crc32": "9E08D539",
+  "fixed_crc32": "DBE3E21E",
+  "baseline_sha256": "a47130d78b70fa1e0e54aa61e4340831036d766a0c59e2738935bd9d04b94a3a",
+  "fixed_sha256": "4550f60e74bb7be7d99e4fd1acaddaf9ac43d5b02a242fadee60c6e92aec30dc",
+  "probe_build": "211dd795b858547a",
+  "probe_sha256": "84e64e3472c3ee6f66e3d4ec08f01957c363f270a6fb0ad174be9447dfb015f0",
+  "proof": {
+    "original": {
+      "accepted": false,
+      "reason": "Defaults must follow final BSS clear"
+    },
+    "fixed": {
+      "table": 770950,
+      "bytes": 192,
+      "slots": 48,
+      "BSS_start": 770830,
+      "BSS_bytes": 2096,
+      "clear_address": 1786,
+      "init_call": 1804
+    },
+    "mutations": [
+      {
+        "name": "missing-call",
+        "rejected": true,
+        "reason": "Expected exactly one default initialization"
+      },
+      {
+        "name": "early-call",
+        "rejected": true,
+        "reason": "Expected exactly one final BSS clear"
+      },
+      {
+        "name": "duplicate-call",
+        "rejected": true,
+        "reason": "Expected exactly one default initialization"
+      },
+      {
+        "name": "malformed-clear",
+        "rejected": true,
+        "reason": "Expected exactly one final BSS clear"
+      },
+      {
+        "name": "table-overruns-BSS",
+        "rejected": true,
+        "reason": "Table/BSS range"
+      }
+    ]
+  },
+  "applications": {
+    "functional": {
+      "path": "/home/smith/Agon/mystuff/eirene-mos-rc1/build/tm001/irq001-build001/functional",
+      "binary": "test.bin",
+      "sha256": "9fd7496b155b1693138f13d4bedd56be40b1aa47ac14465a4942b869af82184b"
+    },
+    "example": {
+      "path": "/home/smith/Agon/mystuff/eirene-mos-rc1/build/tm001/irq001-build001/example",
+      "binary": "example.bin",
+      "sha256": "0fe1241e1356da9e8be2b8f3f41e6eadece590ab3b7c99a4ebb6dc6afeb83f31"
+    },
+    "perf": {
+      "path": "/home/smith/Agon/mystuff/eirene-mos-rc1/build/tm001/irq001-build001/perf",
+      "binary": "rc2.bin",
+      "sha256": "79b5b2a9ef470f156ff5ce473cfd4f4a3886e3101d7644b318e1cf6692a6dc3e"
+    }
+  }
+}

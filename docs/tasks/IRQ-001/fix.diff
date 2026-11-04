@@ -1,0 +1,24 @@
+diff --git a/src/init.asm b/src/init.asm
+index 1647aac..84b3440 100644
+--- a/src/init.asm
++++ b/src/init.asm
+@@ -122,9 +122,6 @@ __init:
+ 		dec a			; Otherwise set to 0
+ 	1:	push af 		; Stack AF, will store later as __c_startup clears globals area
+ 
+-		; Initialize the interrupt vector table
+-		call __init_default_vectors
+-
+ 		; Set rising edge triggered interrupt for vblank GPIO
+ 		ld	a, GPIOMODE_INTRE
+ 		ld	b, 2
+@@ -143,6 +140,9 @@ __init:
+ 		ld (hl), 0
+ 		call ldir_handle_zerolen
+ 
++		; The RAM interrupt jump table is in BSS: initialize it after clearing.
++		call __init_default_vectors
++
+ 		pop af			; Pop the hardReset value
+ 		ld (_hardReset), a	; And store
+ 

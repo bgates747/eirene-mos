@@ -1,0 +1,43 @@
+{
+  "fixed": {
+    "table": 770950,
+    "bytes": 192,
+    "slots": 48,
+    "BSS_start": 770830,
+    "BSS_bytes": 2096,
+    "clear_address": 1786,
+    "init_call": 1804
+  },
+  "mutations": [
+    {
+      "name": "missing-call",
+      "rejected": true,
+      "reason": "Expected exactly one default initialization"
+    },
+    {
+      "name": "early-call",
+      "rejected": true,
+      "reason": "Defaults must follow final BSS clear"
+    },
+    {
+      "name": "duplicate-call",
+      "rejected": true,
+      "reason": "Expected exactly one default initialization"
+    },
+    {
+      "name": "malformed-clear",
+      "rejected": true,
+      "reason": "Expected exactly one final BSS clear"
+    },
+    {
+      "name": "short-default-fill",
+      "rejected": true,
+      "reason": "Expected all48 default JP slots to be seeded/filled"
+    },
+    {
+      "name": "table-overruns-BSS",
+      "rejected": true,
+      "reason": "Table/BSS range"
+    }
+  ]
+}
