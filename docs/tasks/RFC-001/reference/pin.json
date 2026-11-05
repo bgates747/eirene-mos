@@ -1,0 +1,49 @@
+{
+  "url": "https://github.com/AgonPlatform/eirene-mos/pull/2",
+  "head": "ffab9c9c84a31535d1ec976b7e6f23b2579ecb80",
+  "base": "eeebe2d34cf2941b0686d923d762378a7811b021",
+  "updated_at": "2026-11-05T20:03:34Z",
+  "diff_sha256": "e8cafa788a9d224acf17d8153baf3f13135242277ded78bc371b32521ec9e7f9",
+  "reviewed_sources": [
+    {
+      "tree": "head",
+      "upstream_path": "src/init.asm",
+      "sha256": "c34845e0a130397390ca25eb1b2b3628d37edaeb0bf9b31f7fa86ffc6eaad311"
+    },
+    {
+      "tree": "head",
+      "upstream_path": "src/interrupts.asm",
+      "sha256": "06d4b4a3c6cefadfbe6bcadfdfd30114acbce2c4d9dfd0a12d81ab1365daf655"
+    },
+    {
+      "tree": "head",
+      "upstream_path": "src/mos_api.asm",
+      "sha256": "8dabfb7b0ef8dfa619429d84d6cbd9a0cf85f74453dda20c24d753de18c8ccbf"
+    },
+    {
+      "tree": "head",
+      "upstream_path": "src/serial.asm",
+      "sha256": "a109385caf19779e54a110fded7bb031e019f4eb4d78e0e61f886be5c1368b00"
+    },
+    {
+      "tree": "base",
+      "upstream_path": "src/init.asm",
+      "sha256": "c34845e0a130397390ca25eb1b2b3628d37edaeb0bf9b31f7fa86ffc6eaad311"
+    },
+    {
+      "tree": "base",
+      "upstream_path": "src/interrupts.asm",
+      "sha256": "166f67ae552beba7fa5688e27b8e31759b702533f75ac294fa6d3e2e8c64096c"
+    },
+    {
+      "tree": "base",
+      "upstream_path": "src/mos_api.asm",
+      "sha256": "7fc88a9910e1bf982d5934e23b42f76e0682156ea05c82e9e65f698e21edf27e"
+    },
+    {
+      "tree": "base",
+      "upstream_path": "src/serial.asm",
+      "sha256": "aba089c11f256ce5c4a8073a90323195e41229abb4d9c43c2db0c4938bd1e5a1"
+    }
+  ]
+}

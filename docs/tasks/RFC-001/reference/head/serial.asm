@@ -1,0 +1,389 @@
+;
+; Title:	AGON MOS - UART code
+; Author:	Dean Belfield
+; Created:	11/07/2022
+; Last Updated:	29/03/2023
+;
+; Modinfo:
+; 27/07/2022:	Reverted serial_TX back to use RET, not RET.L and increased timeout
+; 08/08/2022:	Added check_CTS
+; 22/03/2023:	Added serial_PUTCH, moved putch and getch from uart.c
+; 23/03/2023:	Renamed serial_RX_WAIT to seral_GETCH
+; 29/03/2023:	Added support for UART1
+
+			INCLUDE	"macros.inc"
+			INCLUDE	"equs.inc"
+
+			.ASSUME	ADL = 1
+			
+			.bss
+uart0_tx_data_pos:		.ds 3
+uart0_tx_data_count:		.ds 3
+uart0_tx_callback: 		.ds 5	; call + 3 bytes + ret OR sis-prefix + call + 2 bytes + ret
+
+			.text
+			
+			XDEF	UART0_serial_TX
+			XDEF	UART0_serial_RX
+			XDEF	UART0_serial_GETCH
+			XDEF	UART0_serial_PUTCH 
+
+			XDEF	UART1_serial_TX
+			XDEF	UART1_serial_RX
+			XDEF	UART1_serial_GETCH
+			XDEF	UART1_serial_PUTCH 
+
+			XDEF	_putch
+			XDEF	_getch 
+			
+			XDEF	putch 		
+			XDEF	getch 
+		 	XDEF	fill_uart0_tx_fifo
+			XDEF	uart0_async_send
+
+			XREF	_serialFlags	; In globals.asm
+				
+UART0_PORT		EQU	0xC0		; UART0
+UART1_PORT		EQU	0xD0		; UART1
+				
+UART0_REG_RBR:		EQU	UART0_PORT+0	; Receive buffer
+UART0_REG_THR:		EQU	UART0_PORT+0	; Transmitter holding
+UART0_REG_DLL:		EQU	UART0_PORT+0	; Divisor latch low
+UART0_REG_IER:		EQU	UART0_PORT+1	; Interrupt enable
+UART0_REG_DLH:		EQU	UART0_PORT+1	; Divisor latch high
+UART0_REG_IIR:		EQU	UART0_PORT+2	; Interrupt identification
+UART0_REG_FCT:		EQU	UART0_PORT+2;	; Flow control
+UART0_REG_LCR:		EQU	UART0_PORT+3	; Line control
+UART0_REG_MCR:		EQU	UART0_PORT+4	; Modem control
+UART0_REG_LSR:		EQU	UART0_PORT+5	; Line status
+UART0_REG_MSR:		EQU	UART0_PORT+6	; Modem status
+UART0_REG_SCR:		EQU 	UART0_PORT+7	; Scratch
+
+UART1_REG_RBR:		EQU	UART1_PORT+0	; Receive buffer
+UART1_REG_THR:		EQU	UART1_PORT+0	; Transmitter holding
+UART1_REG_DLL:		EQU	UART1_PORT+0	; Divisor latch low
+UART1_REG_IER:		EQU	UART1_PORT+1	; Interrupt enable
+UART1_REG_DLH:		EQU	UART1_PORT+1	; Divisor latch high
+UART1_REG_IIR:		EQU	UART1_PORT+2	; Interrupt identification
+UART1_REG_FCT:		EQU	UART1_PORT+2;	; Flow control
+UART1_REG_LCR:		EQU	UART1_PORT+3	; Line control
+UART1_REG_MCR:		EQU	UART1_PORT+4	; Modem control
+UART1_REG_LSR:		EQU	UART1_PORT+5	; Line status
+UART1_REG_MSR:		EQU	UART1_PORT+6	; Modem status
+UART1_REG_SCR:		EQU 	UART1_PORT+7	; Scratch
+
+TX_WAIT			EQU	16384 		; Count before a TX times out
+
+UART_LSR_ERR		EQU 	0x80		; Error
+UART_LSR_ETX		EQU 	0x40		; Transmit empty
+UART_LSR_ETH		EQU	0x20		; Transmit holding register empty
+UART_LSR_RDY		EQU	0x01		; Data ready
+
+; Check whether we're clear to send (UART0 only)
+;
+UART0_wait_CTS:		IN0		A, (UART0_REG_MSR)
+			BIT		4, A			; check inverted CTS bit, 1 = CTS, 0 = NOT CTS (clear to send)
+			JR		Z, UART0_wait_CTS
+			RET
+
+UART1_wait_CTS:		GET_GPIO	PC_DR, 8		; Check Port C, bit 3 (CTS)
+			JR		NZ, UART1_wait_CTS
+			RET
+
+; Write a character to UART0
+; Parameters:
+; - A: Data to write
+; Returns:
+; - F: C if written
+; - F: NC if timed out
+;
+UART0_serial_TX:	PUSH		BC			; Stack BC
+			PUSH		AF 			; Stack AF
+			LD		BC,TX_WAIT		; Set CB to the transmit timeout
+UART0_serial_TX1:	IN0		A,(UART0_REG_LSR)	; Get the line status register
+			AND 		UART_LSR_ETH		; Check for TX hold register empty
+			JR		NZ, UART0_serial_TX2	; If set, then TX is empty, goto transmit
+			DEC		BC
+			LD		A, B
+			OR		C
+			JR		NZ, UART0_serial_TX1
+			POP		AF			; We've timed out at this point so
+			POP		BC			; Restore the stack
+			OR		A			; Clear the carry flag and preserve A
+			RET	
+UART0_serial_TX2:	POP		AF			; Good to send at this point, so
+			OUT0		(UART0_REG_THR),A	; Write the character to the UART transmit buffer
+			POP		BC			; Restore BC
+			SCF					; Set the carry flag
+			RET 
+
+; Write a character to UART1
+; Parameters:
+; - A: Data to write
+; Returns:
+; - F: C if written
+; - F: NC if timed out
+;
+UART1_serial_TX:	PUSH		BC			; Stack BC
+			PUSH		AF 			; Stack AF
+			LD		BC,TX_WAIT		; Set CB to the transmit timeout
+UART1_serial_TX1:	IN0		A,(UART1_REG_LSR)	; Get the line status register
+			AND 		UART_LSR_ETH		; Check for TX empty
+			JR		NZ, UART1_serial_TX2	; If set, then TX is empty, goto transmit
+			DEC		BC
+			LD		A, B
+			OR		C
+			JR		NZ, UART1_serial_TX1
+			POP		AF			; We've timed out at this point so
+			POP		BC			; Restore the stack
+			OR		A			; Clear the carry flag and preserve A
+			RET	
+UART1_serial_TX2:	POP		AF			; Good to send at this point, so
+			OUT0		(UART1_REG_THR),A	; Write the character to the UART transmit buffer
+			POP		BC			; Restore BC
+			SCF					; Set the carry flag
+			RET 
+
+; Read a character from UART0
+; Returns:
+; - A: Data read
+; - F: C if character read
+; - F: NC if no character read
+;
+UART0_serial_RX:	IN0		A,(UART0_REG_LSR)	; Get the line status register
+			AND 		UART_LSR_RDY		; Check for characters in buffer
+			RET		Z			; Just ret (with carry clear) if no characters
+			IN0		A,(UART0_REG_RBR)	; Read the character from the UART receive buffer
+			SCF 					; Set the carry flag
+			RET
+
+; Read a character from UART1
+; Returns:
+; - A: Data read
+; - F: C if character read
+; - F: NC if no character read
+;
+UART1_serial_RX:	IN0		A,(UART1_REG_LSR)	; Get the line status register
+			AND 		UART_LSR_RDY		; Check for characters in buffer
+			RET		Z			; Just ret (with carry clear) if no characters
+			IN0		A,(UART1_REG_RBR)	; Read the character from the UART receive buffer
+			SCF 					; Set the carry flag
+			RET
+
+; Read a character from UART0 (blocking)
+; Returns:
+; - A: Data read
+; - F: C if read
+; - F: NC if UART not enabled
+;
+UART0_serial_GETCH:	PUSH		AF 
+			LD		A, (_serialFlags)
+			TST		01h
+			JR		Z, UART_serial_NE
+			POP		AF
+1:			CALL 		UART0_serial_RX
+			JR		NC,1b
+			RET 
+
+; Read a character from UART1 (blocking)
+; Returns:
+; - A: Data read
+; - F: C if read
+; - F: NC if UART not enabled
+;
+UART1_serial_GETCH:	PUSH		AF 
+			LD		A, (_serialFlags)
+			TST		10h
+			JR		Z, UART_serial_NE
+			POP		AF
+1:			CALL 		UART1_serial_RX
+			JR		NC,1b
+			RET 
+
+; Write a character to UART0 (blocking)
+; Parameters:
+; - A: Character to write out
+; Returns:
+; - F: C if written
+; - F: NC if UART not enabled
+;
+UART0_serial_PUTCH:	PUSH	AF
+			LD	A, (_serialFlags)		; Get the serial flags
+			TST	01h				; Check UART is enabled
+			JR	Z, UART_serial_NE		; If not, then skip
+			TST	02h				; If hardware flow control enabled then
+			CALL	NZ, UART0_wait_CTS		; Wait for clear to send signal
+			POP	AF
+1:			CALL	UART0_serial_TX			; Send the character
+			JR	NC, 1b				; Repeat until sent
+			RET
+
+; Write a character to UART1 (blocking)
+; Parameters:
+; - A: Character to write out
+; Returns:
+; - F: C if written
+; - F: NC if UART not enabled
+;
+UART1_serial_PUTCH:	PUSH	AF
+			LD	A, (_serialFlags)		; Get the serial flags
+			TST	10h				; Check UART is enabled
+			JR	Z, UART_serial_NE		; If not, then skip (reuses UART0 routine here)
+			TST	20h				; If hardware flow control enabled then
+			CALL	NZ, UART1_wait_CTS		; Wait for clear to send signal
+			POP	AF			
+1:			CALL	UART1_serial_TX			; Send the character
+			JR	NC, 1b				; Repeat until sent
+			RET
+
+; Called by UART0 and UART1 PUTCH and GETCH if the UART is not enabled
+;
+UART_serial_NE:		POP	AF				; Tidy up the stack
+			OR	A 				; Clear the carry flag
+			RET
+;
+; The C wrappers
+;
+
+; INT putch(INT ch);
+;
+; Write a character out to the UART
+; Parameters:
+; - ch: The character to write (least significant byte)
+; Returns:
+; - The character written
+;
+_putch:
+putch:			PUSH	IY				; Standard C prologue
+			LD	IY, 0
+			ADD	IY, SP	
+
+			LD	A, (IY+6)			; INT ch (least significant byte)
+			LD	HL, 0				; HLU: The return value
+			LD	L, A 
+			CALL	UART0_serial_PUTCH		; Output the character
+
+			LD 	SP, IY				; Standard epilogue
+			POP	IY
+			RET
+
+; INT getch(VOID);
+;
+; Read a character out to the UART - waits for character input
+; Returns:
+; - The character read
+;
+_getch:
+getch:			PUSH	IY				; Standard C prologue
+			LD	IY, 0
+			ADD	IY, SP	
+
+			CALL	UART0_serial_GETCH		; Read the character
+			LD	HL, 0				; HLU: The return value
+			LD	L, A
+
+			LD 	SP, IY				; Standard epilogue
+			POP	IY
+			RET
+
+			.macro WAIT_CTS
+			1:
+				in0 a,(PD_DR)
+				tst a,8
+				jr nz,1b
+			.endm
+
+
+; hl:data, bc:length, de:completion callback
+uart0_async_send:
+			ld (uart0_tx_data_pos),hl
+			ld (uart0_tx_data_count),bc
+
+			ld a,mb
+			or a
+			jr nz,.setup_z80_uart0_callback
+
+			; Setup ADL callback (no call (hl))
+			ld hl,uart0_tx_callback
+			ld a,0xcd  ; CALL
+			ld (hl),a
+			inc hl
+			ld (hl),de
+			inc hl
+			inc hl
+			inc hl
+			ld a,0xc9  ; RET
+			ld (hl),a
+			jr 1f
+
+		.setup_z80_uart0_callback:
+			; Setup Z80 mixed-mode callback (no call (hl))
+			ld hl,uart0_tx_callback
+			ld a,0x40  ; SIS prefix
+			ld (hl),a
+			inc hl
+			ld a,0xcd  ; CALL
+			ld (hl),a
+			inc hl
+			ld (hl),e
+			inc hl
+			ld (hl),d
+			inc hl
+			ld a,0xc9  ; RET
+			ld (hl),a
+
+		1:
+			; enable FIFO-empty interrupt on uart0
+			in0 a,(UART0_IER)
+			or 2
+			out0 (UART0_IER),a
+			ret
+
+; Interrupt-driven UART0 transmission
+fill_uart0_tx_fifo:
+			push bc
+			push de
+			push hl
+
+			ld bc,16
+			ld hl,(uart0_tx_data_count)
+			or a
+			sbc hl,bc
+
+			jr z,.last_fill
+			jr c,.last_fill
+
+			; send 16 bytes
+			ld (uart0_tx_data_count),hl
+			ld hl,(uart0_tx_data_pos)
+			ld de,UART0_THR
+			WAIT_CTS
+			otirx
+			ld (uart0_tx_data_pos),hl
+			pop hl
+			pop de
+			pop bc
+			pop af	; saved by _uart0_handler
+			ei
+			reti.lil
+
+		.last_fill:
+			; send <=16 final bytes
+			ld bc,(uart0_tx_data_count)
+			ld hl,(uart0_tx_data_pos)
+			ld de,UART0_THR
+			WAIT_CTS
+			otirx
+
+			; disable interrupt since send is finished
+			in0 a,(UART0_IER)
+			and 0xfd
+			out0 (UART0_IER),a
+
+			call uart0_tx_callback
+			pop hl
+			pop de
+			pop bc
+			pop af	; saved by _uart0_handler
+			ei
+			reti.lil

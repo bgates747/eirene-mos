@@ -1,0 +1,172 @@
+[
+  {
+    "revision": "r02",
+    "receipts": [
+      {
+        "mail": "2026-11-05_16-22-08_agon-mos_rfc001-fsim-pingo-review-two",
+        "recipient": "01a11ddb-2f53-7700-b39f-eecc801e14b0",
+        "phase": "accepted",
+        "method": "turn/start",
+        "delivery_id": "uartrfc001-fsim-pingo-review-two",
+        "created_utc": "2026-11-05T21:22:08.603752+00:00",
+        "authorization_id": "CHAT-AUTH-001",
+        "authorization_source_message": "01a1a6ba-c17d-7c91-8e94-3cf1de9d2d5c"
+      },
+      {
+        "mail": "2026-11-05_16-22-11_agon-mos_rfc001-jukebox-review-two",
+        "recipient": "01a07e67-315f-7d71-9425-2c65dfe46d2b",
+        "phase": "accepted",
+        "method": "turn/steer",
+        "delivery_id": "uartrfc001-jukebox-review-two",
+        "created_utc": "2026-11-05T21:22:11.468515+00:00",
+        "authorization_id": "CHAT-AUTH-001",
+        "authorization_source_message": "01a1a6ba-c17d-7c91-8e94-3cf1de9d2d5c"
+      },
+      {
+        "mail": "2026-11-05_16-22-09_agon-mos_rfc001-linux-extender-review-two",
+        "recipient": "01a13443-f921-72d1-9d3e-d05652c7a750",
+        "phase": "accepted",
+        "method": "turn/start",
+        "delivery_id": "uartrfc001-linux-extender-review-two",
+        "created_utc": "2026-11-05T21:22:09.671137+00:00",
+        "authorization_id": "CHAT-AUTH-001",
+        "authorization_source_message": "01a1a6ba-c17d-7c91-8e94-3cf1de9d2d5c"
+      },
+      {
+        "mail": "2026-11-05_16-22-10_agon-mos_rfc001-mechagon-review-two",
+        "recipient": "01a1a883-630e-7b52-85d8-6fbc07cc0ccb",
+        "phase": "accepted",
+        "method": "turn/steer",
+        "delivery_id": "uartrfc001-mechagon-review-two",
+        "created_utc": "2026-11-05T21:22:11.079978+00:00",
+        "authorization_id": "CHAT-AUTH-001",
+        "authorization_source_message": "01a1a6ba-c17d-7c91-8e94-3cf1de9d2d5c"
+      },
+      {
+        "mail": "2026-11-05_16-22-07_agon-mos_rfc001-nurples-review-two",
+        "recipient": "019fc0a7-f33a-7160-a663-427af9394e01",
+        "phase": "accepted",
+        "method": "turn/start",
+        "delivery_id": "uartrfc001-nurples-review-two",
+        "created_utc": "2026-11-05T21:22:08.055654+00:00",
+        "authorization_id": "CHAT-AUTH-001",
+        "authorization_source_message": "01a1a6ba-c17d-7c91-8e94-3cf1de9d2d5c"
+      },
+      {
+        "mail": "2026-11-05_16-22-10_agon-mos_rfc001-rally-review-two",
+        "recipient": "01a1346d-a74a-7211-b5b7-de3bcb8a28e5",
+        "phase": "accepted",
+        "method": "turn/start",
+        "delivery_id": "uartrfc001-rally-review-two",
+        "created_utc": "2026-11-05T21:22:10.647763+00:00",
+        "authorization_id": "CHAT-AUTH-001",
+        "authorization_source_message": "01a1a6ba-c17d-7c91-8e94-3cf1de9d2d5c"
+      },
+      {
+        "mail": "2026-11-05_16-22-10_agon-mos_rfc001-vdplet-review-two",
+        "recipient": "01a1a540-82f4-7970-a1e4-fefc8b8ff9fb",
+        "phase": "accepted",
+        "method": "turn/start",
+        "delivery_id": "uartrfc001-vdplet-review-two",
+        "created_utc": "2026-11-05T21:22:10.235342+00:00",
+        "authorization_id": "CHAT-AUTH-001",
+        "authorization_source_message": "01a1a6ba-c17d-7c91-8e94-3cf1de9d2d5c"
+      },
+      {
+        "mail": "2026-11-05_16-22-09_agon-mos_rfc001-wolf3dorig-review-two",
+        "recipient": "01a1a67f-c3b5-76a2-9eef-66047be3dea3",
+        "phase": "accepted",
+        "method": "turn/steer",
+        "delivery_id": "uartrfc001-wolf3dorig-review-two",
+        "created_utc": "2026-11-05T21:22:09.157902+00:00",
+        "authorization_id": "CHAT-AUTH-001",
+        "authorization_source_message": "01a1a6ba-c17d-7c91-8e94-3cf1de9d2d5c"
+      }
+    ]
+  },
+  {
+    "revision": "r03",
+    "receipts": [
+      {
+        "mail": "2026-11-05_16-25-09_agon-mos_rfc001-fsim-pingo-final-plan-three",
+        "recipient": "01a11ddb-2f53-7700-b39f-eecc801e14b0",
+        "phase": "accepted",
+        "method": "turn/start",
+        "delivery_id": "uartrfc001-fsim-pingo-final-plan-three",
+        "created_utc": "2026-11-05T21:25:09.145899+00:00",
+        "authorization_id": "CHAT-AUTH-001",
+        "authorization_source_message": "01a1a6ba-c17d-7c91-8e94-3cf1de9d2d5c"
+      },
+      {
+        "mail": "2026-11-05_16-25-11_agon-mos_rfc001-jukebox-final-plan-three",
+        "recipient": "01a07e67-315f-7d71-9425-2c65dfe46d2b",
+        "phase": "accepted",
+        "method": "turn/steer",
+        "delivery_id": "uartrfc001-jukebox-final-plan-three",
+        "created_utc": "2026-11-05T21:25:11.717509+00:00",
+        "authorization_id": "CHAT-AUTH-001",
+        "authorization_source_message": "01a1a6ba-c17d-7c91-8e94-3cf1de9d2d5c"
+      },
+      {
+        "mail": "2026-11-05_16-25-09_agon-mos_rfc001-linux-extender-final-plan-three",
+        "recipient": "01a13443-f921-72d1-9d3e-d05652c7a750",
+        "phase": "accepted",
+        "method": "turn/start",
+        "delivery_id": "uartrfc001-linux-extender-final-plan-three",
+        "created_utc": "2026-11-05T21:25:10.028287+00:00",
+        "authorization_id": "CHAT-AUTH-001",
+        "authorization_source_message": "01a1a6ba-c17d-7c91-8e94-3cf1de9d2d5c"
+      },
+      {
+        "mail": "2026-11-05_16-25-11_agon-mos_rfc001-mechagon-final-plan-three",
+        "recipient": "01a1a883-630e-7b52-85d8-6fbc07cc0ccb",
+        "phase": "accepted",
+        "method": "turn/start",
+        "delivery_id": "uartrfc001-mechagon-final-plan-three",
+        "created_utc": "2026-11-05T21:25:11.322347+00:00",
+        "authorization_id": "CHAT-AUTH-001",
+        "authorization_source_message": "01a1a6ba-c17d-7c91-8e94-3cf1de9d2d5c"
+      },
+      {
+        "mail": "2026-11-05_16-25-08_agon-mos_rfc001-nurples-final-plan-three",
+        "recipient": "019fc0a7-f33a-7160-a663-427af9394e01",
+        "phase": "accepted",
+        "method": "turn/start",
+        "delivery_id": "uartrfc001-nurples-final-plan-three",
+        "created_utc": "2026-11-05T21:25:08.636482+00:00",
+        "authorization_id": "CHAT-AUTH-001",
+        "authorization_source_message": "01a1a6ba-c17d-7c91-8e94-3cf1de9d2d5c"
+      },
+      {
+        "mail": "2026-11-05_16-25-10_agon-mos_rfc001-rally-final-plan-three",
+        "recipient": "01a1346d-a74a-7211-b5b7-de3bcb8a28e5",
+        "phase": "accepted",
+        "method": "turn/start",
+        "delivery_id": "uartrfc001-rally-final-plan-three",
+        "created_utc": "2026-11-05T21:25:10.910398+00:00",
+        "authorization_id": "CHAT-AUTH-001",
+        "authorization_source_message": "01a1a6ba-c17d-7c91-8e94-3cf1de9d2d5c"
+      },
+      {
+        "mail": "2026-11-05_16-25-10_agon-mos_rfc001-vdplet-final-plan-three",
+        "recipient": "01a1a540-82f4-7970-a1e4-fefc8b8ff9fb",
+        "phase": "accepted",
+        "method": "turn/start",
+        "delivery_id": "uartrfc001-vdplet-final-plan-three",
+        "created_utc": "2026-11-05T21:25:10.537924+00:00",
+        "authorization_id": "CHAT-AUTH-001",
+        "authorization_source_message": "01a1a6ba-c17d-7c91-8e94-3cf1de9d2d5c"
+      },
+      {
+        "mail": "2026-11-05_16-25-09_agon-mos_rfc001-wolf3dorig-final-plan-three",
+        "recipient": "01a1a67f-c3b5-76a2-9eef-66047be3dea3",
+        "phase": "accepted",
+        "method": "turn/steer",
+        "delivery_id": "uartrfc001-wolf3dorig-final-plan-three",
+        "created_utc": "2026-11-05T21:25:09.610786+00:00",
+        "authorization_id": "CHAT-AUTH-001",
+        "authorization_source_message": "01a1a6ba-c17d-7c91-8e94-3cf1de9d2d5c"
+      }
+    ]
+  }
+]

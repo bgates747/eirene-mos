@@ -1,0 +1,75 @@
+{
+  "revision": "r01",
+  "receipts": [
+    {
+      "mail": "2026-11-05_16-11-23_agon-mos_rfc001-fsim-pingo-review-one",
+      "recipient": "01a11ddb-2f53-7700-b39f-eecc801e14b0",
+      "phase": "accepted",
+      "method": "turn/start",
+      "delivery_id": "uartrfc001-fsim-pingo-review-one",
+      "created_utc": "2026-11-05T21:11:23.177136+00:00",
+      "authorization_id": "CHAT-AUTH-001",
+      "authorization_source_message": "01a1a6ba-c17d-7c91-8e94-3cf1de9d2d5c"
+    },
+    {
+      "mail": "2026-11-05_16-11-24_agon-mos_rfc001-linux-extender-review-one",
+      "recipient": "01a13443-f921-72d1-9d3e-d05652c7a750",
+      "phase": "accepted",
+      "method": "turn/start",
+      "delivery_id": "uartrfc001-linux-extender-review-one",
+      "created_utc": "2026-11-05T21:11:24.216535+00:00",
+      "authorization_id": "CHAT-AUTH-001",
+      "authorization_source_message": "01a1a6ba-c17d-7c91-8e94-3cf1de9d2d5c"
+    },
+    {
+      "mail": "2026-11-05_16-11-25_agon-mos_rfc001-mechagon-review-one",
+      "recipient": "01a1a883-630e-7b52-85d8-6fbc07cc0ccb",
+      "phase": "accepted",
+      "method": "turn/start",
+      "delivery_id": "uartrfc001-mechagon-review-one",
+      "created_utc": "2026-11-05T21:11:25.606654+00:00",
+      "authorization_id": "CHAT-AUTH-001",
+      "authorization_source_message": "01a1a6ba-c17d-7c91-8e94-3cf1de9d2d5c"
+    },
+    {
+      "mail": "2026-11-05_16-11-22_agon-mos_rfc001-nurples-review-one",
+      "recipient": "019fc0a7-f33a-7160-a663-427af9394e01",
+      "phase": "accepted",
+      "method": "turn/start",
+      "delivery_id": "uartrfc001-nurples-review-one",
+      "created_utc": "2026-11-05T21:11:22.370867+00:00",
+      "authorization_id": "CHAT-AUTH-001",
+      "authorization_source_message": "01a1a6ba-c17d-7c91-8e94-3cf1de9d2d5c"
+    },
+    {
+      "mail": "2026-11-05_16-11-25_agon-mos_rfc001-rally-review-one",
+      "recipient": "01a1346d-a74a-7211-b5b7-de3bcb8a28e5",
+      "phase": "accepted",
+      "method": "turn/start",
+      "delivery_id": "uartrfc001-rally-review-one",
+      "created_utc": "2026-11-05T21:11:25.205967+00:00",
+      "authorization_id": "CHAT-AUTH-001",
+      "authorization_source_message": "01a1a6ba-c17d-7c91-8e94-3cf1de9d2d5c"
+    },
+    {
+      "mail": "2026-11-05_16-11-24_agon-mos_rfc001-vdplet-review-one",
+      "recipient": "01a1a540-82f4-7970-a1e4-fefc8b8ff9fb",
+      "phase": "accepted",
+      "method": "turn/start",
+      "delivery_id": "uartrfc001-vdplet-review-one",
+      "created_utc": "2026-11-05T21:11:24.782428+00:00",
+      "authorization_id": "CHAT-AUTH-001",
+      "authorization_source_message": "01a1a6ba-c17d-7c91-8e94-3cf1de9d2d5c"
+    },
+    {
+      "mail": "2026-11-05_16-11-23_agon-mos_rfc001-wolf3dorig-review-one",
+      "recipient": "01a1a67f-c3b5-76a2-9eef-66047be3dea3",
+      "phase": "accepted",
+      "method": "turn/start",
+      "delivery_id": "uartrfc001-wolf3dorig-review-one",
+      "created_utc": "2026-11-05T21:11:23.753307+00:00",
+      "authorization_id": "CHAT-AUTH-001",
+      "authorization_source_message": "01a1a6ba-c17d-7c91-8e94-3cf1de9d2d5c"
+    }
+  ]
+}

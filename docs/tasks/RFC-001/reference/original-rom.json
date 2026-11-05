@@ -1,0 +1,11 @@
+{
+  "producer": "Jukebox UART-004",
+  "source_commit": "ffab9c9c84a31535d1ec976b7e6f23b2579ecb80",
+  "path": "/Agon/mystuff/AgonJukebox/.emulator/rfc-mos-reference/bin/mos.bin",
+  "bundle": "/Agon/mystuff/AgonJukebox/docs/tasks/UART-004/original-rfc-build-artifacts.tar.gz",
+  "bytes": 100824,
+  "sha256": "f2602c0319ff2b1a47942dabcf6c66c696a9de4ce0702e4bda8b9e677f4dc7ac",
+  "crc32": "E07BCF57",
+  "owner_verified_bytes": true,
+  "startup_result": "inherited vector init before BSS clear; expected original failure, not hardware qualified"
+}
