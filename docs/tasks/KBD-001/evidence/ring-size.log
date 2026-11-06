@@ -1,0 +1,3 @@
+   text	   data	    bss	    dec	    hex	filename
+    154	      0	    130	    284	    11c	build/kbd-001/pristine-source/obj/keyboard_buffer.o
+    167	      0	    130	    297	    129	build/kbd-001/source/obj/keyboard_buffer.o

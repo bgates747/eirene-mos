@@ -1,0 +1,12 @@
+{
+  "command": [
+    "make",
+    "-C",
+    "build/kbd-001/corrected-fixture",
+    "AGONDEV_TOOLCHAIN=/Agon/mystuff/eirene-mos/build/rc003/toolchain"
+  ],
+  "returncode": 0,
+  "elapsed_seconds": 0.20181225799024105,
+  "guest_executed": false,
+  "hardware": false
+}

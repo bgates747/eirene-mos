@@ -1,0 +1,94 @@
+
+build/kbd-001/pristine-source/obj/keyboard_buffer.o:     file format elf32-z80
+
+
+Disassembly of section .text:
+
+00000000 <_kbuf_wait_keydown>:
+   0:	dd e5             	push ix
+   2:	dd 21 00 00 00    	ld ix,0x0000
+   7:	dd 39             	add ix,sp
+
+00000009 <.try>:
+   9:	dd 17 06          	ld de,(ix+6)
+   c:	cd 64 00 00       	call 0x0064
+  10:	28 f7             	jr z,0x0109
+  12:	dd 17 06          	ld de,(ix+6)
+  15:	13                	inc de
+  16:	13                	inc de
+  17:	13                	inc de
+  18:	1a                	ld a,(de)
+  19:	b7                	or a,a
+  1a:	28 ed             	jr z,0x0109
+  1c:	dd e1             	pop ix
+  1e:	c9                	ret
+
+0000001f <_kbuf_poll_event>:
+  1f:	dd e5             	push ix
+  21:	dd 21 00 00 00    	ld ix,0x0000
+  26:	dd 39             	add ix,sp
+  28:	dd 17 06          	ld de,(ix+6)
+  2b:	cd 64 00 00       	call 0x0064
+  2f:	dd e1             	pop ix
+  31:	3e 00             	ld a,0x00
+  33:	20 01             	jr nz,0x0036
+  35:	c9                	ret
+
+00000036 <.success>:
+  36:	3c                	inc a
+  37:	c9                	ret
+
+00000038 <kbuf_append>:
+  38:	21 00 00 00       	ld hl,0x0000
+  3c:	3a 01 00 00       	ld a,(0x0001)
+  40:	6f                	ld l,a
+  41:	29                	add hl,hl
+  42:	29                	add hl,hl
+  43:	01 02 00 00       	ld bc,0x0002
+  47:	09                	add hl,bc
+  48:	eb                	ex de,hl
+  49:	01 04 00 00       	ld bc,0x0004
+  4d:	ed b0             	ldir
+  4f:	3a 01 00 00       	ld a,(0x0001)
+  53:	3c                	inc a
+  54:	0e 1f             	ld c,0x1f
+  56:	a1                	and a,c
+  57:	4f                	ld c,a
+  58:	3a 00 00 00       	ld a,(0x0000)
+  5c:	b9                	cp a,c
+  5d:	c8                	ret z
+  5e:	79                	ld a,c
+  5f:	32 01 00 00       	ld (0x0001),a
+  63:	c9                	ret
+
+00000064 <kbuf_remove>:
+  64:	21 00 00 00       	ld hl,0x0000
+  68:	3a 00 00 00       	ld a,(0x0000)
+  6c:	6f                	ld l,a
+  6d:	3a 01 00 00       	ld a,(0x0001)
+  71:	bd                	cp a,l
+  72:	c8                	ret z
+  73:	29                	add hl,hl
+  74:	29                	add hl,hl
+  75:	01 02 00 00       	ld bc,0x0002
+  79:	09                	add hl,bc
+  7a:	01 04 00 00       	ld bc,0x0004
+  7e:	ed b0             	ldir
+  80:	3a 00 00 00       	ld a,(0x0000)
+  84:	3c                	inc a
+  85:	e6 1f             	and a,0x1f
+  87:	32 00 00 00       	ld (0x0000),a
+  8b:	b7                	or a,a
+  8c:	c9                	ret
+
+0000008d <_kbuf_clear>:
+  8d:	e5                	push hl
+  8e:	21 00 00 00       	ld hl,0x0000
+  92:	af                	xor a,a
+  93:	f3                	di
+  94:	77                	ld (hl),a
+  95:	23                	inc hl
+  96:	77                	ld (hl),a
+  97:	fb                	ei
+  98:	e1                	pop hl
+  99:	c9                	ret

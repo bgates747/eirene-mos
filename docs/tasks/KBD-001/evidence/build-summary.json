@@ -1,0 +1,43 @@
+{
+  "base": {
+    "bytes": 100634,
+    "sha256": "7718911966e8e439660331005f0674d2e1e945f08d85b8e5c5681bf8ee4310d8",
+    "map_sha256": "30284ec32dbe07b4ad3bf39609baaa6476b08a307009e93bb3adecb999d855dc",
+    "bss": 2087
+  },
+  "original": {
+    "bytes": 100823,
+    "sha256": "870bdbb393f89fd28b8a4b64148b4350d5aa0dce1e34f8154ef0ac8f1705455c",
+    "map_sha256": "0dfd4823a08de7c8c51b3f9da2b947997499b1913f8816624c3ebc641ae8f141",
+    "bss": 2217,
+    "fixture": {
+      "bytes": 9087,
+      "sha256": "eed289db14ebd0c7dcabc01c25c6d8070f1690dd188a2d8d83a112c0a37d9cfc"
+    }
+  },
+  "corrected": {
+    "bytes": 100836,
+    "sha256": "4ca11a0d9d61b9a201ab415eb983af64e86437d353bbe86325d02e4ffc0a10e8",
+    "map_sha256": "370e7a7d32648eddb98f133d4f5a12b2ba0ffae3ecf0342c9635a582233eb731",
+    "bss": 2217,
+    "fixture": {
+      "bytes": 9100,
+      "sha256": "04c7a9f0e82863217a4e6e247e166601b0672380fd414561f270120026af850b"
+    }
+  },
+  "delta_pr_original": {
+    "bytes": 189,
+    "bss": 130
+  },
+  "delta_correction": {
+    "bytes": 13,
+    "bss": 0
+  },
+  "upstream_pr": "https://github.com/AgonPlatform/eirene-mos/pull/4",
+  "upstream_head": "241ffbaee4bc7e3f814124b59e0b8c07207a9409",
+  "upstream_base": "3a7259c58bfa6f34f58afe24087f418cef0148e0",
+  "candidate_source_commit": "9ccdf458c5e618092bbfdd34790ca708de7d9d63",
+  "target_executed": false,
+  "emulator_executed": false,
+  "hardware_qualified": false
+}

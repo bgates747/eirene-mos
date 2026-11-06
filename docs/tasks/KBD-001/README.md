@@ -22,32 +22,40 @@ KB-001 [x] Pin and review the exact proposal, existing keyboard state/callback
 path, syscall ABI, application entry/exit clearing and interrupt conventions.
 Retain the donor and source findings before editing implementation.
 
-KB-002 [ ] Build the unmodified proposal under the normal Pi compiler FIFO.
+KB-002 [x] Build the unmodified proposal under the normal Pi compiler FIFO.
 Record any real build failures separately from source findings. Preserve the
 same toolchain/flags for the corrected comparison and account for code/RAM cost.
 
-KB-003 [ ] Make minimal corrections: return success when read index wraps to
+KB-003 [x] Make minimal corrections: return success when read index wraps to
 zero; preserve incoming IFF when clearing; keep the header self-contained and
 external symbol spelling consistent. Keep the existing four-byte event,31-event
 capacity, drop-new-on-full policy, original sysvar/keymap/callback path and62h
 syscall. Do not change legacy getkey/editor semantics or silently expand scope.
 
-KB-004 [ ] Prepare matched original/corrected native self-check fixtures using
+KB-004 [x] Prepare matched original/corrected native self-check fixtures using
 the actual keyboard_buffer.asm, not a rewritten ring model. Cover empty output
 unchanged, full/drop-new, ordering, more than32 removals, event fields, key-up/
 keydown filtering and clear with IFF both enabled/disabled. Compile the exact
 code and report checks; target execution remains a separate manual selection.
 
-KB-005 [ ] Document a simple real-keyboard integration check through62h, including
+KB-005 [x] Document a simple real-keyboard integration check through62h, including
 short taps while busy, modifier/up/down ordering, callbacks and old keyboard
 state coexisting, queue saturation, normal app exit and a second launch. Clarify
 that queueing cannot recover packets lost before MOS receives them, infinite
 input bursts, or make legacy foreground state polling buffered automatically.
 
-KB-006 [ ] Retain exact diff, source/binary/map pins, build results and concise
+KB-006 [x] Retain exact diff, source/binary/map pins, build results and concise
 review conclusions. Distinguish compiled checks from executed target evidence.
 Return the candidate and the next qualification step to Brandon. No upstream
 comment/PR, release/tag, emulator/bench run or SD deployment is selected here.
+
+KB-007 [ ] Next qualification: execute the original/corrected local-ring fixtures
+and confirm expected failure32 versus complete pass; then qualify installed62h
+with real keyboard input, legacy input and callback coexistence on a separately
+selected target. No native/guest/hardware execution occurred in this tranche.
+Combining this proposal with RC3's sender is a later matched composition.
+
+Source candidate9ccdf45, exact build pins and scope: [review](review.md).
 
 ## Source findings
 

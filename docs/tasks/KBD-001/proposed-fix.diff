@@ -1,0 +1,66 @@
+diff --git a/src/keyboard_buffer.asm b/src/keyboard_buffer.asm
+index a225ace..85b08ac 100644
+--- a/src/keyboard_buffer.asm
++++ b/src/keyboard_buffer.asm
+@@ -94,21 +94,29 @@ kbuf_remove:	; remove 4-byte value into (de)..(de+3). `z` flag set if no bytes i
+ 		and KBBUF_LEN
+ 		ld (kbbuf_start_idx),a
+ 
+-		or a		; clear `z` flag
++		inc a		; index 0..31 -> 1..32: NZ even after wrapping to zero
+ 		ret
+ 
+ ; Clear (flush) the keyboard buffer
+ _kbuf_clear:
++		push af
++		ld a,i
++		di
++		push af		; P/V records the incoming IFF2
+ 		push hl
+-		ld hl,kbbuf_start_idx
+-		xor a
+ 		; Clear buffer with interrupts disabled to make it atomic
+-		di
+-		ld (hl),a
++		ld hl,kbbuf_start_idx
++		ld (hl),0
+ 		inc hl
+-		ld (hl),a
+-		ei
++		ld (hl),0
+ 		pop hl
++		pop af
++		jp po,.disabled
++		pop af
++		ei
++		ret
++	.disabled:
++		pop af
+ 		ret
+ 
+ 		.bss
+diff --git a/src/keyboard_buffer.h b/src/keyboard_buffer.h
+index 024d9c4..032fbc5 100644
+--- a/src/keyboard_buffer.h
++++ b/src/keyboard_buffer.h
+@@ -2,6 +2,7 @@
+ #define KEYBOARD_BUFFER_H
+ 
+ #include <stdint.h>
++#include <stdbool.h>
+ 
+ struct __attribute__((packed)) keyboard_event_t {
+ 	uint8_t ascii;
+diff --git a/src/misc.asm b/src/misc.asm
+index 3701c13..2be6feb 100644
+--- a/src/misc.asm
++++ b/src/misc.asm
+@@ -37,7 +37,7 @@
+ 			XDEF	_timer0_delay
+ 
+ 			XREF	_callSM
+-			XREF	kbuf_clear
++			XREF	_kbuf_clear
+ 
+ ; Switch on A - lookup table immediately after call
+ ;  A: Index into lookup table

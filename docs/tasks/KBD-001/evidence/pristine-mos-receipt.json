@@ -1,0 +1,12 @@
+{
+  "command": [
+    "make",
+    "-C",
+    "build/kbd-001/pristine-source",
+    "AGONDEV_TOOLCHAIN=/Agon/mystuff/eirene-mos/build/rc003/toolchain"
+  ],
+  "returncode": 0,
+  "elapsed_seconds": 2.004499731992837,
+  "guest_executed": false,
+  "hardware": false
+}

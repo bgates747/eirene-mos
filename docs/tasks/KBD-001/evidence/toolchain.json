@@ -1,0 +1,6 @@
+{
+  "/Agon/mystuff/eirene-mos/build/rc003/toolchain/bin/ez80-none-elf-clang": "b26b8b361834c7af13d272408efafd350cf8d6493c89e50cecd73f9d9e70a220",
+  "/Agon/mystuff/eirene-mos/build/rc003/toolchain/bin/ez80-none-elf-as": "1ee23e5551998d5fe0d2e7dcdf0fa6916342fc2d2c973b467e174ba679509097",
+  "/Agon/mystuff/eirene-mos/build/rc003/toolchain/bin/ez80-none-elf-ld": "8941596adea72c999d20c94938cc61c969731367367110a1c1f6cb9826ba0e23",
+  "/Agon/mystuff/eirene-mos/build/rc003/toolchain/lib/libagon.a": "04e340186590810dd490d01655b50baaca557b7764006598890e845e6fc1252c"
+}
