@@ -58,3 +58,19 @@ rotate scenario order and reverse method order on the second repeat; bound
 report-derived packet expansion before independent byte comparison. The first
 unbuilt freeze remains preserved, with final preparation in perf001-build02.
 These are source/host checks, not target qualification or measured rates.
+
+## Current preparation state
+
+Sources/oracle committed at4c2fef0; device-free positive/corruption checks pass.
+Final unbuilt freeze: `build/rfc001/perf001-build02`, both full/smoke.
+Pi compiler request `d12b0c990fdb`, owneragon-mos/taskRFC001-PERF001-PREP is
+queued behind Extender's priority NET-004-VALID-FILTER. Checkout was refused
+correctly; no compiler launched, no compiler lease held by UART.
+When actual grant/notification arrives, obtain fresh canonical checkout/assert;
+run `python docs/tasks/RFC-001/performance-build.py ACTUAL_TOKEN
+/Agon/mystuff/eirene-mos/build/rfc001/perf001-build02` as one command. Retain
+logs/receipts, release promptly and immediately notify the actual successor.
+Do not reuse any older token, assume elapsed time ends the owner job, or launch
+a target. PF-005/006 remain incomplete, not passed by source review.
+MechAgon/Wolf received substantive source-support mail/steering with no new work
+assigned; receipts are performance-support-deliveries.json.
