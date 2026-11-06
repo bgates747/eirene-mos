@@ -1,0 +1,97 @@
+[
+  {
+    "name": "rc1-jit",
+    "candidate": "rc1",
+    "engine": "jit",
+    "path": "/home/smith/Agon/mystuff/eirene-mos/.emulator/rc003-r01/rc1-jit",
+    "pins": {
+      "flexe-agon-emulator.bin": "7e7d0e1bc89af72bde7ffbd6c06446aaefda4d1803f89eb1faf3167307ee1e01",
+      "flexe-vdp.so": "0866265bd6f3d73ad572f31dc1bb954f308ed9a5d857efa9414d37e1ade13374",
+      "esp32-firmware.bin": "201ad8ab4af807c261cb92634286b2fbaedcf3879f140e820b60ab54cf707e2a",
+      "esp32-firmware.elf": "14715f9f3d88d891dfddbf77c1423defffdb2351412f44fdce140b6d28f59470",
+      "mos_platform.bin": "2825c2830600128a3c93fa78fdb787b3fb7e831c80b862a3adf9164b1b4a8792",
+      "mos_platform.map": "956feaf8c88b0323efb642502c07405ac947a4eb2e2463b62da2cd0803e3f16e",
+      "flexe-agon-emulator": "41cd8f70afd473f18d65b25403a52f0bf6013a93e8b32c4ec283acff947511aa"
+    },
+    "passed": true,
+    "error": null,
+    "payload_verified": 8192,
+    "elapsed_seconds": 18.36129667500063
+  },
+  {
+    "name": "rc2-jit",
+    "candidate": "rc2",
+    "engine": "jit",
+    "path": "/home/smith/Agon/mystuff/eirene-mos/.emulator/rc003-r01/rc2-jit",
+    "pins": {
+      "flexe-agon-emulator.bin": "7e7d0e1bc89af72bde7ffbd6c06446aaefda4d1803f89eb1faf3167307ee1e01",
+      "flexe-vdp.so": "0866265bd6f3d73ad572f31dc1bb954f308ed9a5d857efa9414d37e1ade13374",
+      "esp32-firmware.bin": "201ad8ab4af807c261cb92634286b2fbaedcf3879f140e820b60ab54cf707e2a",
+      "esp32-firmware.elf": "14715f9f3d88d891dfddbf77c1423defffdb2351412f44fdce140b6d28f59470",
+      "mos_platform.bin": "4550f60e74bb7be7d99e4fd1acaddaf9ac43d5b02a242fadee60c6e92aec30dc",
+      "mos_platform.map": "04f37919ede2005963f0c64bc70838917658ec5c2d8b8fc12bc6b617b3348f38",
+      "flexe-agon-emulator": "41cd8f70afd473f18d65b25403a52f0bf6013a93e8b32c4ec283acff947511aa"
+    },
+    "passed": true,
+    "error": null,
+    "payload_verified": 8192,
+    "elapsed_seconds": 18.164527111002826
+  },
+  {
+    "name": "rc3-jit",
+    "candidate": "rc3",
+    "engine": "jit",
+    "path": "/home/smith/Agon/mystuff/eirene-mos/.emulator/rc003-r01/rc3-jit",
+    "pins": {
+      "flexe-agon-emulator.bin": "7e7d0e1bc89af72bde7ffbd6c06446aaefda4d1803f89eb1faf3167307ee1e01",
+      "flexe-vdp.so": "0866265bd6f3d73ad572f31dc1bb954f308ed9a5d857efa9414d37e1ade13374",
+      "esp32-firmware.bin": "201ad8ab4af807c261cb92634286b2fbaedcf3879f140e820b60ab54cf707e2a",
+      "esp32-firmware.elf": "14715f9f3d88d891dfddbf77c1423defffdb2351412f44fdce140b6d28f59470",
+      "mos_platform.bin": "d7a51147f3381cd68d56f3fbe4605434a897dfae1b049269afeba09ec2b7eb50",
+      "mos_platform.map": "48dae5890af7b49fe6bcb535a20e9b6432069c8d84666e3d0e8e7e1070282be9",
+      "flexe-agon-emulator": "41cd8f70afd473f18d65b25403a52f0bf6013a93e8b32c4ec283acff947511aa"
+    },
+    "passed": true,
+    "error": null,
+    "payload_verified": 67377,
+    "elapsed_seconds": 31.977396308000607
+  },
+  {
+    "name": "rc3-interp",
+    "candidate": "rc3",
+    "engine": "interp",
+    "path": "/home/smith/Agon/mystuff/eirene-mos/.emulator/rc003-r01/rc3-interp",
+    "pins": {
+      "flexe-agon-emulator.bin": "7e7d0e1bc89af72bde7ffbd6c06446aaefda4d1803f89eb1faf3167307ee1e01",
+      "flexe-vdp.so": "0866265bd6f3d73ad572f31dc1bb954f308ed9a5d857efa9414d37e1ade13374",
+      "esp32-firmware.bin": "201ad8ab4af807c261cb92634286b2fbaedcf3879f140e820b60ab54cf707e2a",
+      "esp32-firmware.elf": "14715f9f3d88d891dfddbf77c1423defffdb2351412f44fdce140b6d28f59470",
+      "mos_platform.bin": "d7a51147f3381cd68d56f3fbe4605434a897dfae1b049269afeba09ec2b7eb50",
+      "mos_platform.map": "48dae5890af7b49fe6bcb535a20e9b6432069c8d84666e3d0e8e7e1070282be9",
+      "flexe-agon-emulator": "41cd8f70afd473f18d65b25403a52f0bf6013a93e8b32c4ec283acff947511aa"
+    },
+    "passed": true,
+    "error": null,
+    "payload_verified": 67377,
+    "elapsed_seconds": 75.32812255400495
+  },
+  {
+    "name": "foreign-jit",
+    "candidate": "foreign",
+    "engine": "jit",
+    "path": "/home/smith/Agon/mystuff/eirene-mos/.emulator/rc003-r01/foreign-jit",
+    "pins": {
+      "flexe-agon-emulator.bin": "7e7d0e1bc89af72bde7ffbd6c06446aaefda4d1803f89eb1faf3167307ee1e01",
+      "flexe-vdp.so": "0866265bd6f3d73ad572f31dc1bb954f308ed9a5d857efa9414d37e1ade13374",
+      "esp32-firmware.bin": "201ad8ab4af807c261cb92634286b2fbaedcf3879f140e820b60ab54cf707e2a",
+      "esp32-firmware.elf": "14715f9f3d88d891dfddbf77c1423defffdb2351412f44fdce140b6d28f59470",
+      "mos_platform.bin": "4550f60e74bb7be7d99e4fd1acaddaf9ac43d5b02a242fadee60c6e92aec30dc",
+      "mos_platform.map": "04f37919ede2005963f0c64bc70838917658ec5c2d8b8fc12bc6b617b3348f38",
+      "flexe-agon-emulator": "41cd8f70afd473f18d65b25403a52f0bf6013a93e8b32c4ec283acff947511aa"
+    },
+    "passed": true,
+    "error": null,
+    "payload_verified": 0,
+    "elapsed_seconds": 9.803063434999785
+  }
+]

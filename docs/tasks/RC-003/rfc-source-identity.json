@@ -1,0 +1,9 @@
+{
+  "rfc_commit": "ffab9c9c84a31535d1ec976b7e6f23b2579ecb80",
+  "byte_exact_files": {
+    "serial.asm": "a109385caf19779e54a110fded7bb031e019f4eb4d78e0e61f886be5c1368b00",
+    "interrupts.asm": "06d4b4a3c6cefadfbe6bcadfdfd30114acbce2c4d9dfd0a12d81ab1365daf655",
+    "mos_api.asm": "8dabfb7b0ef8dfa619429d84d6cbd9a0cf85f74453dda20c24d753de18c8ccbf"
+  },
+  "rc3_commit": "97311c437093e416342a6c836cf9914f2ced027d"
+}

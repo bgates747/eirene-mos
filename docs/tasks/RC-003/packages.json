@@ -1,0 +1,109 @@
+{
+  "rc1": {
+    "tag": "3.1.0_uart0_rc_1.1",
+    "label": "RC1.1",
+    "commit": "d268d0b344dde678250ef692986c7d8bf79f7c4b",
+    "zip_name": "3.1.0_uart0_rc_1.1.zip",
+    "zip_bytes": 1542989,
+    "zip_sha256": "e64819e23a0f301640c1c40557bba280a8fefadab1364edc780225e949529026",
+    "sha256_name": "3.1.0_uart0_rc_1.1.zip.sha256",
+    "MOS": {
+      "commit": "d268d0b344dde678250ef692986c7d8bf79f7c4b",
+      "bytes": 101140,
+      "sha256": "2825c2830600128a3c93fa78fdb787b3fb7e831c80b862a3adf9164b1b4a8792",
+      "crc32": "97ADC5DB",
+      "map_sha256": "956feaf8c88b0323efb642502c07405ac947a4eb2e2463b62da2cd0803e3f16e",
+      "startup": {
+        "table": 770950,
+        "bytes": 192,
+        "slots": 48,
+        "BSS_start": 770830,
+        "BSS_bytes": 2098,
+        "clear_address": 1786,
+        "init_call": 1804
+      },
+      "build_seconds": 1.8042441940051503,
+      "changed_sources": [
+        "init.asm"
+      ],
+      "changed_objects": [
+        "init.o"
+      ],
+      "sender_unchanged": true
+    },
+    "files": 271,
+    "model_cases": [
+      "rc1-jit"
+    ]
+  },
+  "rc2": {
+    "tag": "3.1.0_uart0_rc_2.1",
+    "label": "RC2.1",
+    "commit": "b219486068b41af8a760f7e4c6b132eea43377b1",
+    "zip_name": "3.1.0_uart0_rc_2.1.zip",
+    "zip_bytes": 1650657,
+    "zip_sha256": "052f6f90c4178aab5f413a7f91ccf2dea1cdb8539fa0c2bd6244b4573c5cfc0e",
+    "sha256_name": "3.1.0_uart0_rc_2.1.zip.sha256",
+    "MOS": {
+      "commit": "b219486068b41af8a760f7e4c6b132eea43377b1",
+      "bytes": 100950,
+      "sha256": "4550f60e74bb7be7d99e4fd1acaddaf9ac43d5b02a242fadee60c6e92aec30dc",
+      "crc32": "DBE3E21E",
+      "map_sha256": "04f37919ede2005963f0c64bc70838917658ec5c2d8b8fc12bc6b617b3348f38",
+      "startup": {
+        "table": 770950,
+        "bytes": 192,
+        "slots": 48,
+        "BSS_start": 770830,
+        "BSS_bytes": 2096,
+        "clear_address": 1786,
+        "init_call": 1804
+      },
+      "build_seconds": 1.8036723810073454,
+      "changed_sources": [
+        "init.asm"
+      ],
+      "changed_objects": [
+        "init.o"
+      ],
+      "sender_unchanged": true
+    },
+    "files": 354,
+    "model_cases": [
+      "rc2-jit"
+    ]
+  },
+  "rc3": {
+    "tag": "3.1.0_uart0_rc_3",
+    "label": "RC3",
+    "commit": "97311c437093e416342a6c836cf9914f2ced027d",
+    "zip_name": "3.1.0_uart0_rc_3.zip",
+    "zip_bytes": 1887937,
+    "zip_sha256": "9c8a9a28b0f597e6a9294d806491ffca3902c16cf1876b092ae8944f65368061",
+    "sha256_name": "3.1.0_uart0_rc_3.zip.sha256",
+    "MOS": {
+      "commit": "97311c437093e416342a6c836cf9914f2ced027d",
+      "bytes": 100879,
+      "sha256": "d7a51147f3381cd68d56f3fbe4605434a897dfae1b049269afeba09ec2b7eb50",
+      "crc32": "B08C80B8",
+      "map_sha256": "48dae5890af7b49fe6bcb535a20e9b6432069c8d84666e3d0e8e7e1070282be9",
+      "startup": {
+        "table": 770950,
+        "bytes": 192,
+        "slots": 48,
+        "BSS_start": 770830,
+        "BSS_bytes": 2098,
+        "clear_address": 1786,
+        "init_call": 1804
+      },
+      "build_seconds": 1.8069142769963946,
+      "clean_rebuild_identical": true
+    },
+    "files": 359,
+    "model_cases": [
+      "rc3-jit",
+      "rc3-interp",
+      "foreign-jit"
+    ]
+  }
+}

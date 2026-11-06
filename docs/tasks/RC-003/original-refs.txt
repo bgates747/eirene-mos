@@ -1,0 +1,3 @@
+86b694260e3be3b391284ce4aa8ecc758f7f34e9	refs/heads/main
+47dd56129c0043931bb32f7d329c0392a0b8a809	refs/tags/3.1.0_uart0_rc_1
+825eaf77176247f5b5ba2f940ae73fcace34e7e5	refs/tags/3.1.0_uart0_rc_2

@@ -1,0 +1,18 @@
+{
+  "owner": "agon-mos",
+  "task": "RC-003-qualification",
+  "purpose": "Finite startup/functional/example checks for RC1.1 RC2.1 RC3, RC3 both engines, foreign-ROM refusal; no throughput or hardware claim",
+  "profile": "/home/smith/Agon/mystuff/eirene-mos/.emulator/rc003-r01",
+  "notify_thread": "01a132e0-4787-7310-93e9-f5248ffb2ff8",
+  "notify_host": "remote-ssh-discovered:raspberrypi",
+  "request": "a53ae28eff8e",
+  "requested": "2026-11-06T01:23:21.219118+00:00",
+  "lease": "129563b54be44af79ddd55a7e231e27b",
+  "generation": 319,
+  "checked_out": "2026-11-06T01:26:08.102626+00:00",
+  "idle_observation": {
+    "machine": "oryx-linuxlite",
+    "epoch": 1793928368.0067873,
+    "emulators": []
+  }
+}

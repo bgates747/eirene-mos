@@ -1,0 +1,192 @@
+{
+  "schema": "RC003-build-1",
+  "candidates": {
+    "rc1-old": {
+      "commit": "47dd56129c0043931bb32f7d329c0392a0b8a809",
+      "bytes": 101140,
+      "sha256": "49873fb817f47cc76f50b8cec1c3d9cde7b252ac2ec844e08e745bdaf1c5eeab",
+      "crc32": "3F792F8D",
+      "map_sha256": "956feaf8c88b0323efb642502c07405ac947a4eb2e2463b62da2cd0803e3f16e",
+      "startup": {
+        "rejected": "Defaults must follow final BSS clear"
+      },
+      "build_seconds": 1.803960395976901
+    },
+    "rc1": {
+      "commit": "d268d0b344dde678250ef692986c7d8bf79f7c4b",
+      "bytes": 101140,
+      "sha256": "2825c2830600128a3c93fa78fdb787b3fb7e831c80b862a3adf9164b1b4a8792",
+      "crc32": "97ADC5DB",
+      "map_sha256": "956feaf8c88b0323efb642502c07405ac947a4eb2e2463b62da2cd0803e3f16e",
+      "startup": {
+        "table": 770950,
+        "bytes": 192,
+        "slots": 48,
+        "BSS_start": 770830,
+        "BSS_bytes": 2098,
+        "clear_address": 1786,
+        "init_call": 1804
+      },
+      "build_seconds": 1.8042441940051503,
+      "changed_sources": [
+        "init.asm"
+      ],
+      "changed_objects": [
+        "init.o"
+      ],
+      "sender_unchanged": true
+    },
+    "rc2-old": {
+      "commit": "825eaf77176247f5b5ba2f940ae73fcace34e7e5",
+      "bytes": 100950,
+      "sha256": "a47130d78b70fa1e0e54aa61e4340831036d766a0c59e2738935bd9d04b94a3a",
+      "crc32": "9E08D539",
+      "map_sha256": "04f37919ede2005963f0c64bc70838917658ec5c2d8b8fc12bc6b617b3348f38",
+      "startup": {
+        "rejected": "Defaults must follow final BSS clear"
+      },
+      "build_seconds": 1.8037511209840886
+    },
+    "rc2": {
+      "commit": "b219486068b41af8a760f7e4c6b132eea43377b1",
+      "bytes": 100950,
+      "sha256": "4550f60e74bb7be7d99e4fd1acaddaf9ac43d5b02a242fadee60c6e92aec30dc",
+      "crc32": "DBE3E21E",
+      "map_sha256": "04f37919ede2005963f0c64bc70838917658ec5c2d8b8fc12bc6b617b3348f38",
+      "startup": {
+        "table": 770950,
+        "bytes": 192,
+        "slots": 48,
+        "BSS_start": 770830,
+        "BSS_bytes": 2096,
+        "clear_address": 1786,
+        "init_call": 1804
+      },
+      "build_seconds": 1.8036723810073454,
+      "changed_sources": [
+        "init.asm"
+      ],
+      "changed_objects": [
+        "init.o"
+      ],
+      "sender_unchanged": true
+    },
+    "rc3": {
+      "commit": "97311c437093e416342a6c836cf9914f2ced027d",
+      "bytes": 100879,
+      "sha256": "d7a51147f3381cd68d56f3fbe4605434a897dfae1b049269afeba09ec2b7eb50",
+      "crc32": "B08C80B8",
+      "map_sha256": "48dae5890af7b49fe6bcb535a20e9b6432069c8d84666e3d0e8e7e1070282be9",
+      "startup": {
+        "table": 770950,
+        "bytes": 192,
+        "slots": 48,
+        "BSS_start": 770830,
+        "BSS_bytes": 2098,
+        "clear_address": 1786,
+        "init_call": 1804
+      },
+      "build_seconds": 1.8069142769963946,
+      "clean_rebuild_identical": true
+    }
+  },
+  "apps": {
+    "rc1": {
+      "functional": {
+        "build": "2946d92ddf9096c0",
+        "path": "/Agon/mystuff/eirene-mos/build/rc003/native-r02/apps/rc1/functional",
+        "binary_sha256": "7e142da53669b6d262fae6d22a9ce35c25ef7dd130a05c7718a517c93a51f820",
+        "source_sha256": {
+          "src/api.src": "8b5b2aa16aee0750a7f4483c57722590074880fab63371a702e908a81fd652ae",
+          "src/identity.h": "d2102bfbba900062e9b9c0a51ce165671c9cac9db52bf44f5e6f6d7937247b77",
+          "src/main.c": "6bece0dbb2aaa817d9af0c8837b4d107c53de44f3307c5f8a023978178f6ec7f",
+          "src/packets.h": "d70a40461cada598940da05228cc1ebf85308a45dbae2d091ddb0f113a5f7403",
+          "src/rom_crc.h": "431ca061cf457897508b85faa3a1bb9a8c4b857f080d0e130c25dd90dfebef61",
+          "src/run_counter.inc": "d7502d61ba19fc7f6dd7a02298a5b8a9409ef48ecfd0b918b89cbdb328845009"
+        }
+      },
+      "example": {
+        "build": "5e1646d8547d4505",
+        "path": "/Agon/mystuff/eirene-mos/build/rc003/native-r02/apps/rc1/example",
+        "binary_sha256": "a2b69d6cfc755a260183cbca91d09c464057dadd6fc9ad7706d37195bb7cec7f",
+        "source_sha256": {
+          "src/identity.h": "76d5550ea06b080b511fe977f9d24b493bef7a4b59b6c0f72552d2d4f9a3d2bc",
+          "src/main.c": "8b4e2b19c356b279097804ff52340c711e565f3e10bedf4df6fbbd82b06610dd",
+          "src/rom_crc.h": "431ca061cf457897508b85faa3a1bb9a8c4b857f080d0e130c25dd90dfebef61",
+          "src/uart0_async.c": "df9c895d89df681cdcdd991b9402334ca2060d16257dc6b466c5703a53731be3",
+          "src/uart0_async.h": "1cb1d44177b6249fd5e0c084ba597c58bb9e00c0c58f4cb767ba7d0c69f444e6",
+          "src/uart0_async_bridge.src": "56d83ac4dd3bac6d06ea22320333800ecb606c251f11cd8ab6fc20a536672346"
+        }
+      }
+    },
+    "rc2": {
+      "functional": {
+        "build": "4cc23a399e9a7beb",
+        "path": "/Agon/mystuff/eirene-mos/build/rc003/native-r02/apps/rc2/functional",
+        "binary_sha256": "7fc40da223e47d5ea6fa7d50719a9f83bbbe7e27f06fd9bc8a7fe777ae8131de",
+        "source_sha256": {
+          "src/api.src": "dea44fc569b8b4979c54b7b3d7f263307d94502c6385d8a7af2e72a52cc526a4",
+          "src/callback_gate.inc": "0e7e092f2cbb6ccde8aea503245cbdcd1edc366b71dc2b7853efae26739dafe0",
+          "src/identity.h": "c9cd4401d1ca6c581268ccc772cb375cec0f4a8120412055ad2184782866b2ee",
+          "src/main.c": "4c2826aa764d51c74b506126c8eb3fb1852b88510a5ed2e1fdc3493919aa8f7f",
+          "src/packets.h": "d70a40461cada598940da05228cc1ebf85308a45dbae2d091ddb0f113a5f7403",
+          "src/rom_crc.h": "431ca061cf457897508b85faa3a1bb9a8c4b857f080d0e130c25dd90dfebef61",
+          "src/run_counter.inc": "d7502d61ba19fc7f6dd7a02298a5b8a9409ef48ecfd0b918b89cbdb328845009"
+        }
+      },
+      "example": {
+        "build": "18b749b2c2958b31",
+        "path": "/Agon/mystuff/eirene-mos/build/rc003/native-r02/apps/rc2/example",
+        "binary_sha256": "0fe1241e1356da9e8be2b8f3f41e6eadece590ab3b7c99a4ebb6dc6afeb83f31",
+        "source_sha256": {
+          "src/callback_gate.inc": "0e7e092f2cbb6ccde8aea503245cbdcd1edc366b71dc2b7853efae26739dafe0",
+          "src/callback_gate.src": "b2dfb29c24efc9377ae3dbf3b6e13b421ca44cd47144762502c3d98a84983999",
+          "src/identity.h": "335ff115b4ddaffb5f3433402adfbcc434d91b72592c3c84cb7dc87a686ab7e6",
+          "src/main.c": "cba08dc59e2e4eac94c2624b38ab23b4d8400955a0bf7f22b5c7f7a3553e07d5",
+          "src/rom_crc.h": "431ca061cf457897508b85faa3a1bb9a8c4b857f080d0e130c25dd90dfebef61",
+          "src/uart0_async.c": "df9c895d89df681cdcdd991b9402334ca2060d16257dc6b466c5703a53731be3",
+          "src/uart0_async.h": "ab1f1f34f0a10045e3fdf39af4bd2fc7b6316a5a7d6160176bff2c00827d46a6",
+          "src/uart0_async_bridge.src": "56d83ac4dd3bac6d06ea22320333800ecb606c251f11cd8ab6fc20a536672346"
+        }
+      }
+    },
+    "rc3": {
+      "functional": {
+        "path": "/Agon/mystuff/eirene-mos/build/rc003/native-r02/apps/rc3/fixture",
+        "binary_sha256": "4d65eedda6254d7b15fc8fd922a88b71a6e876d09453f2da4f44c34463c52a59",
+        "generated": {
+          "build": "742a047a89441962",
+          "mos_bytes": 100879,
+          "mos_sha256": "d7a51147f3381cd68d56f3fbe4605434a897dfae1b049269afeba09ec2b7eb50",
+          "map_sha256": "48dae5890af7b49fe6bcb535a20e9b6432069c8d84666e3d0e8e7e1070282be9",
+          "mos_crc32": "B08C80B8",
+          "source": {
+            "Makefile": "44d8e0c9ca7cdb729756b05e30ceb4533d075d5d77327783615f2427253251f8",
+            "src/api.src": "6c9727153c952687abc152a057ada2f3254f46e3ea1c6078d9933a29e55458cc",
+            "src/main.c": "09d5ddf6e932595905c3abfe7f6b3af50221858b880586f907ef7bd28e484119",
+            "src/packets.h": "d70a40461cada598940da05228cc1ebf85308a45dbae2d091ddb0f113a5f7403",
+            "src/rom_crc.h": "431ca061cf457897508b85faa3a1bb9a8c4b857f080d0e130c25dd90dfebef61",
+            "src/run_counter.inc": "d7502d61ba19fc7f6dd7a02298a5b8a9409ef48ecfd0b918b89cbdb328845009"
+          },
+          "symbols": {
+            "RFC_IRQ_TABLE": 770950,
+            "RFC_UART_ISR": 1991,
+            "RFC_VBLANK_ISR": 1947,
+            "RFC_I2C_ISR": 2028
+          }
+        }
+      },
+      "example": {
+        "path": "/Agon/mystuff/eirene-mos/build/rc003/native-r02/apps/rc3/example",
+        "binary_sha256": "63950da06d07183e3d69be5df36b138037f2eee96ce99f6b86b6363ac8061a01"
+      }
+    }
+  },
+  "toolchain": {
+    "ez80-none-elf-clang": "b26b8b361834c7af13d272408efafd350cf8d6493c89e50cecd73f9d9e70a220",
+    "ez80-none-elf-as": "1ee23e5551998d5fe0d2e7dcdf0fa6916342fc2d2c973b467e174ba679509097",
+    "ez80-none-elf-ld": "8941596adea72c999d20c94938cc61c969731367367110a1c1f6cb9826ba0e23"
+  },
+  "libagon_sha256": "04e340186590810dd490d01655b50baaca557b7764006598890e845e6fc1252c",
+  "elapsed_seconds": 16.37451555300504
+}
