@@ -86,3 +86,30 @@ calling the latency cohort qualified; then complete the already planned matched
 CPU/throughput fixture. PER-001/PER-002 remain unimplemented, not completed by
 these transfer results. No permanent-stall test or additional MOS robustness
 code is proposed. Keep RC3 private and experimental pending the RFC merge.
+
+## Flexe source interpretation — 2026-11-05
+
+[Retained owner reply](owner-replies/2026-11-05_23-12-43_flexe_lat001-model-counter-source-136.md)
+checks the exact7e7d frontend/0866265 backend and retained UART source, without
+new execution or model edits. It confirms that `rx_overruns` counts individual
+modeled eZ80 RX FIFO admission discards. Each byte has already been dequeued
+from the VDP bridge when that check runs; an emitted/delivered trace is therefore
+not proof of successful eZ80 FIFO admission or MOS parsing.
+
+Important refinement: this is a lifetime counter, saved on selected IER writes,
+not a guaranteed final or per-case snapshot. The retained16 proves **at least16
+receive-byte discards through that snapshot**. No trace timestamps or discarded
+byte identities assign those losses to a particular case or packet, or exclude
+earlier setup/later loss. The two lower in-window keyboard totals do not resolve
+that attribution. No per-case overrun or exactly-two-lost-keys claim is justified.
+
+The engine selects ESP32 execution, while eZ80 UART/PRT state follows separately
+accounted eZ80 cycles. A slower VDP can prolong CTS waits in those cycles; frame
+publication and IRQ service can also coalesce. Bridge intake batches and lack
+of a shared timestamped serial-link schedule remain possible contributors.
+The source supports the ISR-starvation mechanism but does not isolate the cause
+of these16 discards or establish hardware behavior. Whole-cell frame/cycle-rate
+ratios must not be used to correct LAT1 results into physical timings.
+
+Disposition unchanged: model qualification fails, no new firmware fix or replay
+is selected, and the finite Console8 confirmation requires separate selection.

@@ -399,5 +399,7 @@
       ],
       "max_gap_ticks": 43648
     }
-  ]
+  ],
+  "rx_counter_scope": "Cumulative since UART creation, snapshot on selected IER writes;16 is a lower bound through snapshot, not final/per-case or packet attribution.",
+  "source_interpretation": "owner-replies/2026-11-05_23-12-43_flexe_lat001-model-counter-source-136.md"
 }
