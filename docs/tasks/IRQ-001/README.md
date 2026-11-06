@@ -84,3 +84,17 @@ Confirm all four startup reports, both UART regressions and all nine PERF2
 trials; preserve raw files and unchanged deployed inputs. Record the unlogged
 example separately from instrumented evidence. No upstream notification or
 release promotion is implied by closing this hardware gate.
+
+IRQ-011/012/013 standalone attachment preparation is complete in
+[the attachment plan](attachment-plan.md). The [local PR draft](upstream-report-draft.md)
+and [single-file test ZIP](irq-startup-test.zip) were approved and published;
+the publication receipt below records the final state. The new 734-byte checker reproduced the defect and passed the fix in
+Flexe; it is distinct from the previously hardware-tested detailed fixture.
+[Validation and pins](attachment-validation.md).
+
+IRQ-010 [x] Published the Author-approved startup fix as
+[upstream Eirene PR #3](https://github.com/AgonPlatform/eirene-mos/pull/3),
+under bgates747, with the verified standalone ZIP linked from the body.
+[Publication receipt](upstream-publication.json) pins the exact commits, ZIP,
+body and one-file diff. The local draft now mirrors the published body.
+The existing main branches and RC releases were preserved.

@@ -1,0 +1,34 @@
+{
+  "owner": "agon-mos",
+  "task": "irq001-standalone",
+  "purpose": "Two60s cold-boot original/fixed cells for single-file IRQ checker; attachment-plan.md",
+  "profile": "/home/smith/Agon/mystuff/eirene-mos/.emulator/irq001-standalone",
+  "notify_thread": "01a132e0-4787-7310-93e9-f5248ffb2ff8",
+  "notify_host": "remote-ssh-discovered:raspberrypi",
+  "request": "b2a85cbf3820",
+  "requested": "2026-11-06T00:17:07.225510+00:00",
+  "lease": "5b5ee726f6f04352b3f2036615a1d163",
+  "generation": 316,
+  "checked_out": "2026-11-06T00:34:29.904731+00:00",
+  "idle_observation": {
+    "machine": "oryx-linuxlite",
+    "epoch": 1793925269.84286,
+    "emulators": []
+  },
+  "released": "2026-11-06T00:35:11.528942+00:00",
+  "release_observation": {
+    "machine": "oryx-linuxlite",
+    "epoch": 1793925311.4523003,
+    "emulators": []
+  },
+  "next_request": {
+    "owner": "jukebox",
+    "task": "UART-004-F00",
+    "purpose": "Full RFC ABI functional cohort on exact original while owner patch pending: six120second cells max900seconds, distinct from final corrected pairing",
+    "profile": "/home/smith/Agon/mystuff/AgonJukebox/.emulator/uart004-full",
+    "notify_thread": "01a07e67-315f-7d71-9425-2c65dfe46d2b",
+    "notify_host": "remote-ssh-discovered:raspberrypi",
+    "request": "43f5d9062205",
+    "requested": "2026-11-06T00:34:32.659015+00:00"
+  }
+}

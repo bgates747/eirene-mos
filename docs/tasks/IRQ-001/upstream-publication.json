@@ -1,0 +1,37 @@
+{
+  "status": "published with direct Author approval",
+  "human_instruction": "no print as in publish it to upstream.",
+  "pull_request": {
+    "additions": 3,
+    "author": "bgates747",
+    "base_repo": "AgonPlatform/eirene-mos",
+    "base_sha": "eeebe2d34cf2941b0686d923d762378a7811b021",
+    "body": "Codex prepared this PR and test suite on behalf of Brandon.\n\nEirene initializes its 48-entry RAM interrupt jump table, then clears BSS,\nwhich contains that table. Normal startup reinstalls UART0, VBlank and I2C,\nmasking the loss of the other 45 defaults. This can break code that expects an\nunused vector to contain the default handler, including UART1 admission.\n\nMove the existing `__init_default_vectors` call after BSS clearing. This adds\nno instructions or RAM and leaves the table layout and interrupt handlers\nunchanged.\n\nMainstream ZDS II MOS keeps the table outside BSS and is not affected by this \nparticular defect.\n\nThe attached test reproduces the problem and proves that the patch fixes it.\nThe ZIP contains a standalone assembly source, its binary, brief instructions\nand the proposed patch. Run the same `irqcheck` binary before and after the fix.\n\n[Download the test ZIP](https://github.com/bgates747/eirene-mos/raw/84462dd44fb78b2c99c655b2a3a964f9711875fa/irq-startup-test.zip).\n\n```diff\ndiff --git a/src/init.asm b/src/init.asm\nindex 1647aac..84b3440 100644\n--- a/src/init.asm\n+++ b/src/init.asm\n@@ -122,9 +122,6 @@ __init:\n \t\tdec a\t\t\t; Otherwise set to 0\n \t1:\tpush af \t\t; Stack AF, will store later as __c_startup clears globals area\n \n-\t\t; Initialize the interrupt vector table\n-\t\tcall __init_default_vectors\n-\n \t\t; Set rising edge triggered interrupt for vblank GPIO\n \t\tld\ta, GPIOMODE_INTRE\n \t\tld\tb, 2\n@@ -143,6 +140,9 @@ __init:\n \t\tld (hl), 0\n \t\tcall ldir_handle_zerolen\n \n+\t\t; The RAM interrupt jump table is in BSS: initialize it after clearing.\n+\t\tcall __init_default_vectors\n+\n \t\tpop af\t\t\t; Pop the hardReset value\n \t\tld (_hardReset), a\t; And store\n \n```\n",
+    "changed_files": 1,
+    "deletions": 3,
+    "draft": false,
+    "head_repo": "bgates747/agon-mos",
+    "head_sha": "f04009ac25c9a3c4ceb737d9086c79f39c22c85f",
+    "html_url": "https://github.com/AgonPlatform/eirene-mos/pull/3",
+    "number": 3,
+    "state": "open"
+  },
+  "files": [
+    {
+      "additions": 3,
+      "deletions": 3,
+      "filename": "src/init.asm",
+      "status": "modified"
+    }
+  ],
+  "artifacts": {
+    "base": "eeebe2d34cf2941b0686d923d762378a7811b021",
+    "fix_commit": "f04009ac25c9a3c4ceb737d9086c79f39c22c85f",
+    "attachment_commit": "84462dd44fb78b2c99c655b2a3a964f9711875fa",
+    "zip_sha256": "c7b77ea6613c1209f411e879df5b24e2df402e623d2f7dd4d545a5cbcf0a74d2",
+    "zip_url": "https://github.com/bgates747/eirene-mos/raw/84462dd44fb78b2c99c655b2a3a964f9711875fa/irq-startup-test.zip"
+  },
+  "public_attachment_download_sha256_verified": true,
+  "chat_pr_attachment_completed": true,
+  "routing_note": "bgates747/eirene-mos is independent, not a GitHub fork. AgonPlatform/eirene-mos is in AgonPlatform/agon-mos fork network; GitHub returned existing bgates747/agon-mos as linked fork. Head repository selected explicitly by GraphQL ID. No main branch, existing release or original workspace dirt altered."
+}

@@ -1,0 +1,109 @@
+{
+  "schema": "irq001-minimal-attachment-1",
+  "status": "Published as the verified test attachment linked from upstream Eirene PR3 with direct Author approval.",
+  "app_bytes": 734,
+  "source_sha256": "b4a1ebea4ff00866c551d5b3ba5e114b3a6bb1f0b0089ce39828a797abb99258",
+  "binary_sha256": "58aabd76daa9b3f434e4b33de67e4693a440e318d0ad0174edba7bbbec437323",
+  "zip_bytes": 4469,
+  "zip_sha256": "c7b77ea6613c1209f411e879df5b24e2df402e623d2f7dd4d545a5cbcf0a74d2",
+  "members": {
+    "irqcheck.asm": {
+      "bytes": 3529,
+      "sha256": "b4a1ebea4ff00866c551d5b3ba5e114b3a6bb1f0b0089ce39828a797abb99258"
+    },
+    "irqcheck.bin": {
+      "bytes": 734,
+      "sha256": "58aabd76daa9b3f434e4b33de67e4693a440e318d0ad0174edba7bbbec437323"
+    },
+    "README.md": {
+      "bytes": 1912,
+      "sha256": "b009d664f324c751fef663c410789f317af0e788b9dcf8c9aa1a12cb21f17013"
+    },
+    "LICENSE.txt": {
+      "bytes": 1097,
+      "sha256": "1841b6ddd93210b507c7864b47a56296efc62abaa5343cbe630053d3e8408ad6"
+    },
+    "fix.diff": {
+      "bytes": 672,
+      "sha256": "d73f09e892927f3bf1ab8541c04f836485e89126b8804654d23479c5877fbf0e"
+    }
+  },
+  "build": {
+    "scope": "single-file standalone assembly fixture only; no firmware build",
+    "bytes": 734,
+    "source_sha256": "5dc052b583973592f10dc4134ed70728e20d264288b292e0c80ed395931462c3",
+    "binary_sha256": "58aabd76daa9b3f434e4b33de67e4693a440e318d0ad0174edba7bbbec437323",
+    "commands": [
+      [
+        "/Agon/mystuff/worktrees/emos-build-003/tools/agondev/bin/ez80-none-elf-as",
+        "-march=ez80+adl",
+        "-o",
+        "/Agon/mystuff/eirene-mos/build/irq001-standalone/irqcheck.o",
+        "/Agon/mystuff/eirene-mos/docs/tasks/IRQ-001/attachment/irqcheck.asm"
+      ],
+      [
+        "/Agon/mystuff/worktrees/emos-build-003/tools/agondev/bin/ez80-none-elf-ld",
+        "-Ttext=0x40000",
+        "-e",
+        "_start",
+        "--oformat=binary",
+        "-Map=/Agon/mystuff/eirene-mos/build/irq001-standalone/irqcheck.map",
+        "-o",
+        "/Agon/mystuff/eirene-mos/docs/tasks/IRQ-001/attachment/irqcheck.bin",
+        "/Agon/mystuff/eirene-mos/build/irq001-standalone/irqcheck.o"
+      ],
+      [
+        "/Agon/mystuff/worktrees/emos-build-003/tools/agondev/bin/ez80-none-elf-objdump",
+        "-dr",
+        "/Agon/mystuff/eirene-mos/build/irq001-standalone/irqcheck.o"
+      ]
+    ],
+    "toolchain_as_sha256": "1ee23e5551998d5fe0d2e7dcdf0fa6916342fc2d2c973b467e174ba679509097",
+    "toolchain_ld_sha256": "8941596adea72c999d20c94938cc61c969731367367110a1c1f6cb9826ba0e23",
+    "target_run_yet": false
+  },
+  "model_results": [
+    {
+      "case": "before",
+      "path": "/home/smith/Agon/mystuff/eirene-mos/.emulator/irq001-standalone/before",
+      "pins": {
+        "flexe-agon-emulator.bin": "7e7d0e1bc89af72bde7ffbd6c06446aaefda4d1803f89eb1faf3167307ee1e01",
+        "flexe-vdp.so": "0866265bd6f3d73ad572f31dc1bb954f308ed9a5d857efa9414d37e1ade13374",
+        "esp32-firmware.bin": "201ad8ab4af807c261cb92634286b2fbaedcf3879f140e820b60ab54cf707e2a",
+        "esp32-firmware.elf": "14715f9f3d88d891dfddbf77c1423defffdb2351412f44fdce140b6d28f59470",
+        "mos_platform.bin": "a47130d78b70fa1e0e54aa61e4340831036d766a0c59e2738935bd9d04b94a3a",
+        "mos_platform.map": "0f51e006e6898f39bd5d202e95b82dbdfd2f91701f8272b8e84a64c4417b0e25",
+        "flexe-agon-emulator": "41cd8f70afd473f18d65b25403a52f0bf6013a93e8b32c4ec283acff947511aa"
+      },
+      "app_sha256": "58aabd76daa9b3f434e4b33de67e4693a440e318d0ad0174edba7bbbec437323",
+      "passed": true,
+      "error": null,
+      "elapsed_seconds": 7.275250769002014
+    },
+    {
+      "case": "after",
+      "path": "/home/smith/Agon/mystuff/eirene-mos/.emulator/irq001-standalone/after",
+      "pins": {
+        "flexe-agon-emulator.bin": "7e7d0e1bc89af72bde7ffbd6c06446aaefda4d1803f89eb1faf3167307ee1e01",
+        "flexe-vdp.so": "0866265bd6f3d73ad572f31dc1bb954f308ed9a5d857efa9414d37e1ade13374",
+        "esp32-firmware.bin": "201ad8ab4af807c261cb92634286b2fbaedcf3879f140e820b60ab54cf707e2a",
+        "esp32-firmware.elf": "14715f9f3d88d891dfddbf77c1423defffdb2351412f44fdce140b6d28f59470",
+        "mos_platform.bin": "4550f60e74bb7be7d99e4fd1acaddaf9ac43d5b02a242fadee60c6e92aec30dc",
+        "mos_platform.map": "0f51e006e6898f39bd5d202e95b82dbdfd2f91701f8272b8e84a64c4417b0e25",
+        "flexe-agon-emulator": "41cd8f70afd473f18d65b25403a52f0bf6013a93e8b32c4ec283acff947511aa"
+      },
+      "app_sha256": "58aabd76daa9b3f434e4b33de67e4693a440e318d0ad0174edba7bbbec437323",
+      "passed": true,
+      "error": null,
+      "elapsed_seconds": 7.198660474001372
+    }
+  ],
+  "new_binary_hardware_tested": false,
+  "prior_hardware_proof": "hardware-results.md",
+  "evidence_archive_sha256": "7ea954c90302e00e2cafd2fdc5a3a85faa1022a8d174ca0edf1cd86452395dee",
+  "upstream_patch_check": "git apply --check passed against retained upstream eeebe2d34cf2941b0686d923d762378a7811b021 init.asm",
+  "source_at_build_sha256": "5dc052b583973592f10dc4134ed70728e20d264288b292e0c80ed395931462c3",
+  "post_build_source_change": "Author attribution corrected to Brandon in comments only; assembler statements unchanged; binary unchanged.",
+  "published_url": "https://github.com/bgates747/eirene-mos/raw/84462dd44fb78b2c99c655b2a3a964f9711875fa/irq-startup-test.zip",
+  "pull_request_url": "https://github.com/AgonPlatform/eirene-mos/pull/3"
+}
