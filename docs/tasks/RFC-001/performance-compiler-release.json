@@ -1,0 +1,12 @@
+{
+  "owner": "agon-mos",
+  "request": "d12b0c990fdb",
+  "generation": 236,
+  "lease": "f0f4cbd369fe4a95be0f06c312d1a73c",
+  "released": "2026-11-06T08:42:52.153730+00:00",
+  "owned_work_stopped": true,
+  "cleanup_complete": true,
+  "next_request": null,
+  "automatic_build_grant": null,
+  "receipt_kind": "selected fields from actual canonical release response; no successor notification required"
+}

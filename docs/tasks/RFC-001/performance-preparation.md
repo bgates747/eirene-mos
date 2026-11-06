@@ -39,14 +39,14 @@ it is not exact ISR-cycle accounting. Zero work while blocking is not proof
 that UART code occupies100percent of the CPU. Keep submit/release/drain elapsed
 observations distinct; don't add overlapping intervals as exclusive CPU buckets.
 
-PF-005 [ ] Freeze full/short sources and generated identity/packet tables against
+PF-005 [x] Freeze full/short sources and generated identity/packet tables against
 published RC3. Build serially with pinned existing AgonDev library under actual
 Pi FIFO.2binaries,600s whole/180s child,80C/512MiB guard; first error stops attempt,
 retain it and correct source before a fresh bounded build. No compiler install.
 Retain map/disassembly and source/hash receipts; release immediately and notify
 actual successor. MechAgon/Wolf priority requests are not preempted.
 
-PF-006 [ ] Prepare local private package with exact source, binaries, unchanged
+PF-006 [x] Prepare local private package with exact source, binaries, unchanged
 MOS and concise expected-duration instructions. Do not write a card or launch
 smoke/full guest. Future target selection/qualification remains separate;
 LAT001 model receive losses and manual Console8 confirmation remain OPEN.
@@ -59,18 +59,29 @@ report-derived packet expansion before independent byte comparison. The first
 unbuilt freeze remains preserved, with final preparation in perf001-build02.
 These are source/host checks, not target qualification or measured rates.
 
-## Current preparation state
+## Completed preparation state — no target execution
 
-Sources/oracle committed at4c2fef0; device-free positive/corruption checks pass.
-Final unbuilt freeze: `build/rfc001/perf001-build02`, both full/smoke.
-Pi compiler request `d12b0c990fdb`, owneragon-mos/taskRFC001-PERF001-PREP is
-queued behind Extender's priority NET-004-VALID-FILTER. Checkout was refused
-correctly; no compiler launched, no compiler lease held by UART.
-When actual grant/notification arrives, obtain fresh canonical checkout/assert;
-run `python docs/tasks/RFC-001/performance-build.py ACTUAL_TOKEN
-/Agon/mystuff/eirene-mos/build/rfc001/perf001-build02` as one command. Retain
-logs/receipts, release promptly and immediately notify the actual successor.
-Do not reuse any older token, assume elapsed time ends the owner job, or launch
-a target. PF-005/006 remain incomplete, not passed by source review.
-MechAgon/Wolf received substantive source-support mail/steering with no new work
-assigned; receipts are performance-support-deliveries.json.
+Source/oracle commit 4c2fef0, final frozen inputs perf001-build02. Both binaries
+compiled under actual Pi compiler slot 236; its 1.75-second build completed normally.
+Full caller: 24,396 bytes, SHA256
+`92133d496b3a68948e83cb9663b80b25dfdc5cacde547c4af543d400e54626c9`.
+Short caller: 24,242 bytes, SHA256
+`5c068c80555518d071ac0aeb4c602db1800033064ba1c2755743dfb21e71e3c7`.
+Maps place BSS below 0xB0000; bridge disassembly and compiler logs are retained.
+Independent source/oracle corruption controls passed before build.
+
+Compiler slot 236 was released at 08:42:52 UTC, all owned children stopped. The canonical
+release returned no queued successor, so no successor notice was needed.
+Actual checkout, selected release-response fields and build receipts are in
+performance-compiler-checkout.json, performance-compiler-release.json and
+performance-build-result.json. Earlier refused checkout/priority wait history
+is retained by prior commits; no priority build was preempted.
+
+Private package: `build/rfc001/perf001-prepared.zip`, exact generated sources,
+binaries, unchanged RC3/source, pinned SDK, instructions and maps/checker.
+Every ZIP member was hash-verified; its pin is in
+performance-preparation-result.json. No card write, emulator, bench execution or
+public release. PF-005/006 close preparation only. PER-001 runtime evidence,
+PER-002 and LAT001 manual applicability remain OPEN. MechAgon/Wolf source-support
+mail and steering receipts are performance-support-deliveries.json; no new work
+was assigned to either owner.
