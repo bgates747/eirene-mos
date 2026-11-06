@@ -13,7 +13,7 @@ RC3 B08C80B8/d7a51147 remains unchanged. MechAgon parallel VALID investigation
 belongs to Extender; Wolf currently owns its hardware suite. Do not acquire
 bench or Oryx custody or interrupt either. Send only substantive dependencies.
 
-PF-002 [ ] Prepare `test.bin`, no switches, with3 rotated repeats of: idle-work
+PF-002 [x] Prepare `test.bin`, no switches, with3 rotated repeats of: idle-work
 calibration; flat-out synchronous and async output without credited calculation;
 flat-out paired output with calculation; paired256-byte chunks averaging44,100
 payload bytes/s. Full windows10s; separate short `smoke.bin` uses the identical
@@ -23,7 +23,7 @@ producer and borrowed source, prearmed assembly callback. Between packets await
 source release only, not TEMT; both arms share that policy. Require TEMT before
 normal output, receiver checks and exit. Include actual tail drain in elapsed.
 
-PF-003 [ ] Reuse inactive PRT1 polling72kHz clock, no timer IRQ or keyboard hook.
+PF-003 [x] Reuse inactive PRT1 polling72kHz clock, no timer IRQ or keyboard hook.
 Restore prior disabled controls/source bits, refuse active timer/foreign ROM or
 MBASE/IFF. Readback is not proof of source selection on an unimplemented model:
 original7e7d lacksTMR_ISS0x92, FX167 candidate is separate and not adopted here.
@@ -31,7 +31,7 @@ Single unobserved interval must be <65536ticks; external duration evidence is
 required before physical rates. Reloads are write-only/nonrestorable. No timer
 ownership or calibration claim extends to another app/provider by this build.
 
-PF-004 [ ] Independent report/oracle validates counters, packet totals, callback
+PF-004 [x] Independent report/oracle validates counters, packet totals, callback
 counts, xorshift work states and nominal pacing, including deliberate bad-state,
 missing-case and callback/packet corruption controls. Retained capacity is
 (work/time)/(idle_work/idle_time). Foregone capacity includes caller bookkeeping;
@@ -52,3 +52,9 @@ smoke/full guest. Future target selection/qualification remains separate;
 LAT001 model receive losses and manual Console8 confirmation remain OPEN.
 PER-002's separate tight-assembly/VSync reproduction is not implemented by this
 prep. No background watcher or indefinite waiting loop is introduced.
+
+Pre-build source review changes: fence progress output before idle calibration;
+rotate scenario order and reverse method order on the second repeat; bound
+report-derived packet expansion before independent byte comparison. The first
+unbuilt freeze remains preserved, with final preparation in perf001-build02.
+These are source/host checks, not target qualification or measured rates.

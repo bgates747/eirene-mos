@@ -1,0 +1,45 @@
+.assume adl=1
+.text
+.global _pf_submit,_pf_down,_pf_context,_rom_byte0
+.extern _pf_source,_pf_length,_pf_done,_pf_callbacks
+_pf_submit:
+ ld hl,(_pf_source)
+ ld bc,(_pf_length)
+ ld de,pf_callback
+ ld a,025h
+ rst.lil 08h
+ ret
+; Raw RFC ISR saves primary AF/BC/DE/HL. No IX/IY/shadow/MBASE use.
+pf_callback:
+ ld hl,(_pf_callbacks)
+ inc hl
+ ld (_pf_callbacks),hl
+ ld a,1
+ ld (_pf_done),a
+ ret
+_pf_context:
+ ld a,mb
+ or a
+ ret nz
+ ld a,i
+ jp po,pf_bad_context
+ xor a
+ ret
+pf_bad_context:
+ ld a,1
+ ret
+_rom_byte0:
+ ld a,(0)
+ ret
+_pf_down:
+ ld a,i
+ push af
+ di
+ ld hl,0
+ in0 l,(132)
+ in0 h,(133)
+ pop af
+ jp po,pf_down_masked
+ ei
+pf_down_masked:
+ ret
