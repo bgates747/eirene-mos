@@ -175,3 +175,28 @@ measure underruns, ISR timestamps, elapsed handoff time or CPU capacity; these
 remain future benchmark oracles. Its matched packetized-sync control is not yet
 implemented. Four finite functional cells are queued, all unrun at handoff;
 this separate task continues without extending UART suite scope.
+
+## Jukebox functional return after UART first tranche
+
+Actual E02/generation315 smoke passed playback/pause/resume/normal quit/timer
+restoration,429packet/callback/drain matches and114400payload bytes, with zero
+backend/UART errors. These counters do not prove byte-exact PCM or performance.
+Its following integrity cell stopped BEFORE application invocation: existing
+VECTORS.BIN made MOS SAVE refuse overwrite at autoexec line3. Maxrate/mismatch
+cells remain unrun, and no retry or firmware change is selected by this record.
+Exact substantive mail2026-11-05_17-56-59_jukebox_uart004-e02-smoke-pass-fixture-stop-six
+is retained in owner-replies/. This is a fixture file collision, not a demonstrated
+transmission failure. Jukebox released Oryx with empty-host evidence.
+
+## Post-review baseline selection — 2026-11-05
+
+Brandon selected tagged RC3 for Nurples APP-001, recorded by durable message
+`2026-11-05_22-34-38_nurples_rfc001-rc3-baseline-human-selection`. The r04 plan
+pins source `97311c437093e416342a6c836cf9914f2ced027d`, ROM CRC32 `B08C80B8`,
+SHA256 `d7a51147f3381cd68d56f3fbe4605434a897dfae1b049269afeba09ec2b7eb50`.
+RC3 includes the startup correction and exact RFC25 sender; both matched
+Nurples controls use it. D-006's previously future startup decision is thus
+settled for APP-001. Original ffab9c9 failure and functional results remain
+historical and retain their actual ROM pins. No qualification is transferred
+between images, and no new build/run/hardware authority follows. Private
+experimental use remains the limit pending the RFC's merge.

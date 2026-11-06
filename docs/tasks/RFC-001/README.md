@@ -6,9 +6,10 @@ or sound. Compare identical workloads with ordinary output and background
 sending, then use application measurements to show where the saved time helps.
 This is a review plan, not a claim that the new proposal is already qualified.
 
-Revision r03, 2026-11-05. Owner feedback and dispositions are in
-[feedback.md](feedback.md); immutable replies are retained in owner-replies/. Suite implementation and hardware deployment await
-Smith's review. Smith separately instructed Jukebox to write and execute its
+Revision r04, 2026-11-05. Owner feedback and dispositions are in
+[feedback.md](feedback.md); immutable replies are retained in owner-replies/. Smith authorized the first transfer-validation implementation tranche on
+2026-11-05; see [first-tranche.md](first-tranche.md). Later performance/app and
+hardware deployment gates remain separate. Smith separately instructed Jukebox to write and execute its
 migration task immediately. All other recipients may inspect their own code and
 advise on integration and benchmarks; this request does not start their builds,
 bench runs, firmware changes or publication.
@@ -49,6 +50,32 @@ Source-review questions to reproduce or resolve, not yet measured RFC defects:
   IRQ-001 already demonstrated this ordering defect in our earlier base. Check
   section placement and startup on the actual RFC build before any card staging;
   keep exact-proposal evidence and any narrowly corrected variant distinct.
+
+## Selected Nurples baseline — RC3, 2026-11-05
+
+Brandon selected our tagged RC3 for Nurples APP-001. Use this image for BOTH
+packetized synchronous and async controls; the original uncorrected RFC ROM
+remains historical reference evidence, not the selected deployment baseline.
+
+- Release: [3.1.0_uart0_rc_3](https://github.com/bgates747/eirene-mos/releases/tag/3.1.0_uart0_rc_3).
+- Source commit: `97311c437093e416342a6c836cf9914f2ced027d`.
+- MOS: 100879 bytes; CRC32 `B08C80B8`.
+- SHA256: `d7a51147f3381cd68d56f3fbe4605434a897dfae1b049269afeba09ec2b7eb50`.
+- Startup fix followed by the exact pinned RFC25 sender; RC2 services 42h/43h
+  are absent. [RC-003](../RC-003/README.md) records builds, maps and qualification.
+
+Nurples' canonical application checkout is now
+`/home/smith/Agon/mystuff/nurples-repair`, branch `dev`; the old checkout is
+retired. Selection and checkout provenance are in durable mail
+`2026-11-05_22-34-38_nurples_rfc001-rc3-baseline-human-selection`.
+
+This is private experimental use pending the RFC's merge, not approval for
+broader adoption. A public prerelease download does not change that limit.
+Existing original-RFC model/app results retain their original firmware identity;
+none becomes an RC3 result through this selection. CTS/DI latency, MBASE and
+callback constraints, distinct source/TEMT/receiver completion, matched workload
+accounting and further performance/hardware gates remain in effect. This plan
+update does not authorize new hardware or emulator execution.
 
 ## Review distribution
 
@@ -124,9 +151,10 @@ Source/map/toolchain proof and ROM are in
 Its linked startup verifier reproduces the inherited vector/BSS failure.
 That known expected failure must remain visible in any isolated original-ROM
 functional campaign; it is not a startup-qualified/hardware-ready image. For
-our later deployment cohort, settle startup explicitly and apply any correction
-to both matched controls. No firmware correction or physical test is started
-by this plan. Jukebox's own implementation/qualification remains separately
+Nurples' selected deployment cohort, RC3 supplies the startup correction to both
+matched controls, as pinned above. This supersedes the earlier unresolved
+startup decision for APP-001; the original-ROM evidence remains unchanged. No
+physical test is started by this plan update. Jukebox's own implementation/qualification remains separately
 authorized; it conservatively waits for TEMT before every next packet and will
 report that prototype overhead rather than call it an API requirement.
 
@@ -145,7 +173,7 @@ Smith's review. Record actual delivery and reply state, not acceptance by infere
 
 ## Proposed implementation tranche — deferred until review
 
-ABI-001 [ ] Make a minimal command-line appliance and worked ADL callback example;
+ABI-001 [x] Make a minimal command-line appliance and worked ADL callback example;
 prove source order, exactly one completion, immediate-completion flag arming,
 normal output after drain and repeat invocation. Include lengths 1/15/16/17,
 255/256/257, 1024 and valid large spans. Preserve expected/actual byte checks,
@@ -183,7 +211,8 @@ payload versus wire bytes separately (1,152,000 baud, 8N1 gives 115,200 wire byt
 PRT and VSync checks help validate accounting; emulator timing is not hardware
 performance, and shared clock sources are not independent clock calibration.
 
-APP-001 [ ] Prioritize Nurples after its owner's review. Use a repeatable scene,
+APP-001 [ ] Use Brandon's selected tagged RC3 baseline above for Nurples, with
+both matched controls on that same MOS. Use a repeatable scene,
 seed/input trace and fixed quality. Start with move_sprite_group sprite packets
 as an integration proof, then a larger full-frame/earlier packet overlapping actor
 updates as the performance case: the late sprite-only seam may only overlap
@@ -311,3 +340,11 @@ for record, then UART stops; no further review loop or execution is started.
 Review handoff: r02 and final r03 delivered to all eight existing chats; actual
 receipts are in refined-plan-deliveries.json. UART stopped for Smith review.
 Delivery does not imply implementation approval or complete second-round replies.
+
+Execution update: first transfer fixture compiled and host checks passed;
+original-RFC target runs are queued. See first-tranche.md and fixture-build.json.
+This supersedes the earlier planning stop for that tranche only.
+
+First-tranche completion: original-RFC functional checks pass in both Flexe
+engines plus wrong-ROM refusal. See [qualification.md](qualification.md).
+Finite CTS/input-latency, performance and application cohorts remain next work.
