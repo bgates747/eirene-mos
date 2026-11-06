@@ -1,0 +1,48 @@
+.assume adl=1
+.text
+.global _rfc_submit,_rfc_callback,_rfc_context,_rfc_lsr,_rfc_ier,_rom_byte0
+.extern _rfc_source,_rfc_length,_rfc_done,_rfc_callbacks,_rfc_returned,_rfc_early
+; C register-ABI bridge. RFC25 has no defined working status return.
+_rfc_submit:
+ ld hl,(_rfc_source)
+ ld bc,(_rfc_length)
+ ld de,_rfc_callback
+ ld a,025h
+ rst.lil 08h
+ ld a,1
+ ld (_rfc_returned),a
+ ret
+; Primary registers are saved by the RFC ISR. No index/shadow/MB use.
+_rfc_callback:
+ ld a,(_rfc_callbacks)
+ inc a
+ ld (_rfc_callbacks),a
+ ld a,(_rfc_returned)
+ or a
+ jr nz,rfc_callback_done
+ ld a,1
+ ld (_rfc_early),a
+rfc_callback_done:
+ ld a,1
+ ld (_rfc_done),a
+ ret
+_rfc_context:
+ ld a,mb
+ or a
+ ret nz
+ ld a,i
+ jp po,rfc_context_bad
+ xor a
+ ret
+rfc_context_bad:
+ ld a,1
+ ret
+_rfc_lsr:
+ in0 a,(0c5h)
+ ret
+_rfc_ier:
+ in0 a,(0c1h)
+ ret
+_rom_byte0:
+ ld a,(0)
+ ret

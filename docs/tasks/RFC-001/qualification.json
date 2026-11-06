@@ -1,0 +1,282 @@
+{
+  "schema": "RFC001-functional-1",
+  "firmware_commit": "ffab9c9c84a31535d1ec976b7e6f23b2579ecb80",
+  "mos_crc32": "E07BCF57",
+  "firmware_modified": false,
+  "firmware_startup_default_defect_retained": true,
+  "cells": [
+    {
+      "path": "/home/smith/Agon/mystuff/eirene-mos/.emulator/rfc001-first001/functional-jit",
+      "kind": "functional",
+      "engine": "jit",
+      "mos_sha256": "f2602c0319ff2b1a47942dabcf6c66c696a9de4ce0702e4bda8b9e677f4dc7ac",
+      "stopped": true,
+      "passed": true,
+      "error": null,
+      "elapsed_seconds": 55.00509423800031,
+      "physical": false
+    },
+    {
+      "path": "/home/smith/Agon/mystuff/eirene-mos/.emulator/rfc001-first001/functional-interp",
+      "kind": "functional",
+      "engine": "interp",
+      "mos_sha256": "f2602c0319ff2b1a47942dabcf6c66c696a9de4ce0702e4bda8b9e677f4dc7ac",
+      "stopped": true,
+      "passed": true,
+      "error": null,
+      "elapsed_seconds": 137.8977882600011,
+      "physical": false
+    },
+    {
+      "path": "/home/smith/Agon/mystuff/eirene-mos/.emulator/rfc001-first001/refusal-jit",
+      "kind": "refusal",
+      "engine": "jit",
+      "mos_sha256": "a47130d78b70fa1e0e54aa61e4340831036d766a0c59e2738935bd9d04b94a3a",
+      "stopped": true,
+      "passed": true,
+      "error": null,
+      "elapsed_seconds": 7.8106713380002475,
+      "physical": false
+    }
+  ],
+  "invocations": [
+    {
+      "engine": "jit",
+      "run": 1,
+      "passed": true,
+      "cases": [
+        {
+          "case": 1,
+          "borrowed": 1,
+          "payload": 1
+        },
+        {
+          "case": 2,
+          "borrowed": 15,
+          "payload": 15
+        },
+        {
+          "case": 3,
+          "borrowed": 16,
+          "payload": 16
+        },
+        {
+          "case": 4,
+          "borrowed": 17,
+          "payload": 17
+        },
+        {
+          "case": 5,
+          "borrowed": 255,
+          "payload": 255
+        },
+        {
+          "case": 6,
+          "borrowed": 256,
+          "payload": 256
+        },
+        {
+          "case": 7,
+          "borrowed": 257,
+          "payload": 257
+        },
+        {
+          "case": 8,
+          "borrowed": 1024,
+          "payload": 1024
+        },
+        {
+          "case": 9,
+          "borrowed": 67588,
+          "payload": 65536
+        }
+      ],
+      "payload_verified": 67377,
+      "wire_bytes": 1110674,
+      "physical": false,
+      "callback_count": 9,
+      "early_callback_observed": true
+    },
+    {
+      "engine": "jit",
+      "run": 2,
+      "passed": true,
+      "cases": [
+        {
+          "case": 1,
+          "borrowed": 1,
+          "payload": 1
+        },
+        {
+          "case": 2,
+          "borrowed": 15,
+          "payload": 15
+        },
+        {
+          "case": 3,
+          "borrowed": 16,
+          "payload": 16
+        },
+        {
+          "case": 4,
+          "borrowed": 17,
+          "payload": 17
+        },
+        {
+          "case": 5,
+          "borrowed": 255,
+          "payload": 255
+        },
+        {
+          "case": 6,
+          "borrowed": 256,
+          "payload": 256
+        },
+        {
+          "case": 7,
+          "borrowed": 257,
+          "payload": 257
+        },
+        {
+          "case": 8,
+          "borrowed": 1024,
+          "payload": 1024
+        },
+        {
+          "case": 9,
+          "borrowed": 67588,
+          "payload": 65536
+        }
+      ],
+      "payload_verified": 67377,
+      "wire_bytes": 1110812,
+      "physical": false,
+      "callback_count": 9,
+      "early_callback_observed": true
+    },
+    {
+      "engine": "interp",
+      "run": 1,
+      "passed": true,
+      "cases": [
+        {
+          "case": 1,
+          "borrowed": 1,
+          "payload": 1
+        },
+        {
+          "case": 2,
+          "borrowed": 15,
+          "payload": 15
+        },
+        {
+          "case": 3,
+          "borrowed": 16,
+          "payload": 16
+        },
+        {
+          "case": 4,
+          "borrowed": 17,
+          "payload": 17
+        },
+        {
+          "case": 5,
+          "borrowed": 255,
+          "payload": 255
+        },
+        {
+          "case": 6,
+          "borrowed": 256,
+          "payload": 256
+        },
+        {
+          "case": 7,
+          "borrowed": 257,
+          "payload": 257
+        },
+        {
+          "case": 8,
+          "borrowed": 1024,
+          "payload": 1024
+        },
+        {
+          "case": 9,
+          "borrowed": 67588,
+          "payload": 65536
+        }
+      ],
+      "payload_verified": 67377,
+      "wire_bytes": 1110674,
+      "physical": false,
+      "callback_count": 9,
+      "early_callback_observed": true
+    },
+    {
+      "engine": "interp",
+      "run": 2,
+      "passed": true,
+      "cases": [
+        {
+          "case": 1,
+          "borrowed": 1,
+          "payload": 1
+        },
+        {
+          "case": 2,
+          "borrowed": 15,
+          "payload": 15
+        },
+        {
+          "case": 3,
+          "borrowed": 16,
+          "payload": 16
+        },
+        {
+          "case": 4,
+          "borrowed": 17,
+          "payload": 17
+        },
+        {
+          "case": 5,
+          "borrowed": 255,
+          "payload": 255
+        },
+        {
+          "case": 6,
+          "borrowed": 256,
+          "payload": 256
+        },
+        {
+          "case": 7,
+          "borrowed": 257,
+          "payload": 257
+        },
+        {
+          "case": 8,
+          "borrowed": 1024,
+          "payload": 1024
+        },
+        {
+          "case": 9,
+          "borrowed": 67588,
+          "payload": 65536
+        }
+      ],
+      "payload_verified": 67377,
+      "wire_bytes": 1110812,
+      "physical": false,
+      "callback_count": 9,
+      "early_callback_observed": true
+    }
+  ],
+  "payload_bytes_verified": 269508,
+  "accepted_transfers": 36,
+  "no_physical_tests": true,
+  "no_performance_claim": true,
+  "artifact_sha256": "ce60daa6107e54af80fb8086bc385db0c11477e4fc2a3595e7fe8c23cdbbf7dc",
+  "artifact_bytes": 12547272,
+  "archive": "build/rfc001/first001-evidence-complete.tar.gz",
+  "tooling": "Private frozen canonical Pi flexe_profile.py; no shared Oryx environment change",
+  "checkout_generation": 314,
+  "released": true
+}

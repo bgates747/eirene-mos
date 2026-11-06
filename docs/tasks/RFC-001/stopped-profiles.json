@@ -1,0 +1,35 @@
+{
+  "schema": "RFC001-stopped-profiles-1",
+  "build": "fa1aa76e080564c6",
+  "app_sha256": "6d487f59cbb727e5bb6a38059cc4d73be4d3ec408296466dfe803454e7c393ae",
+  "runtime": {
+    "flexe-agon-emulator.bin": "7e7d0e1bc89af72bde7ffbd6c06446aaefda4d1803f89eb1faf3167307ee1e01",
+    "flexe-vdp.so": "0866265bd6f3d73ad572f31dc1bb954f308ed9a5d857efa9414d37e1ade13374",
+    "esp32-firmware.bin": "201ad8ab4af807c261cb92634286b2fbaedcf3879f140e820b60ab54cf707e2a",
+    "esp32-firmware.elf": "14715f9f3d88d891dfddbf77c1423defffdb2351412f44fdce140b6d28f59470"
+  },
+  "profile_api_sha256": "2e7fa13cb9f27ea1a696d472c90604749dd0c8709afc29034ec6e1909409bf34",
+  "profiles": [
+    {
+      "path": "/home/smith/Agon/mystuff/eirene-mos/.emulator/rfc001-first001/functional-jit",
+      "kind": "functional",
+      "engine": "jit",
+      "mos_sha256": "f2602c0319ff2b1a47942dabcf6c66c696a9de4ce0702e4bda8b9e677f4dc7ac",
+      "stopped": true
+    },
+    {
+      "path": "/home/smith/Agon/mystuff/eirene-mos/.emulator/rfc001-first001/functional-interp",
+      "kind": "functional",
+      "engine": "interp",
+      "mos_sha256": "f2602c0319ff2b1a47942dabcf6c66c696a9de4ce0702e4bda8b9e677f4dc7ac",
+      "stopped": true
+    },
+    {
+      "path": "/home/smith/Agon/mystuff/eirene-mos/.emulator/rfc001-first001/refusal-jit",
+      "kind": "refusal",
+      "engine": "jit",
+      "mos_sha256": "a47130d78b70fa1e0e54aa61e4340831036d766a0c59e2738935bd9d04b94a3a",
+      "stopped": true
+    }
+  ]
+}

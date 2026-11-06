@@ -1,0 +1,18 @@
+{
+  "owner": "agon-mos",
+  "task": "rfc001-transfer-functional",
+  "purpose": "Finite original RFC transfer checks, both Flexe engines and wrong-ROM refusal; first-tranche.md",
+  "profile": "/home/smith/Agon/mystuff/eirene-mos/.emulator/rfc001-first001",
+  "notify_thread": "01a132e0-4787-7310-93e9-f5248ffb2ff8",
+  "notify_host": "remote-ssh-discovered:raspberrypi",
+  "request": "7e8703bb24a9",
+  "requested": "2026-11-05T22:33:22.406957+00:00",
+  "lease": "6fc2885958144a48ba7b52f5df326af3",
+  "generation": 314,
+  "checked_out": "2026-11-05T22:47:56.574731+00:00",
+  "idle_observation": {
+    "machine": "oryx-linuxlite",
+    "epoch": 1793918876.5127451,
+    "emulators": []
+  }
+}

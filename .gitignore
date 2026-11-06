@@ -8,3 +8,5 @@ bin/
 obj/
 *.o
 __pycache__/
+
+.emulator/
