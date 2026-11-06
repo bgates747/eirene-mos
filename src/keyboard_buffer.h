@@ -2,6 +2,7 @@
 #define KEYBOARD_BUFFER_H
 
 #include <stdint.h>
+#include <stdbool.h>
 
 struct __attribute__((packed)) keyboard_event_t {
 	uint8_t ascii;

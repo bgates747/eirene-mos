@@ -37,7 +37,7 @@
 			XDEF	_timer0_delay
 
 			XREF	_callSM
-			XREF	kbuf_clear
+			XREF	_kbuf_clear
 
 ; Switch on A - lookup table immediately after call
 ;  A: Index into lookup table
