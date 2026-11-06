@@ -1,0 +1,161 @@
+.assume adl=1
+.text
+.global _lat_submit,_lat_down,_lat_key_poll,_lat_context,_rom_byte0
+.global _lat_timer_isr,_lat_keyboard,_lat_reset
+.extern _tx_source,_tx_length,_tx_done,_tx_callbacks,_observing
+.extern _irq_last,_irq_count,_irq_max_gap,_key_pending,_key_stamp,_key_count,_key_coalesced
+_lat_submit:
+ ld hl,(_tx_source)
+ ld bc,(_tx_length)
+ ld de,lat_callback
+ ld a,025h
+ rst.lil 08h
+ ret
+lat_callback:
+ ld hl,(_tx_callbacks)
+ inc hl
+ ld (_tx_callbacks),hl
+ ld a,1
+ ld (_tx_done),a
+ ret
+_lat_context:
+ ld a,mb
+ or a
+ ret nz
+ ld a,i
+ jp po,lat_bad
+ xor a
+ ret
+lat_bad:
+ ld a,1
+ ret
+_rom_byte0:
+ ld a,(0)
+ ret
+; Atomic16-bit down-counter read; do not read/ack its CTL or enable its IRQ.
+_lat_down:
+ ld a,i
+ push af
+ di
+ ld hl,0
+ in0 l,(132)
+ in0 h,(133)
+ pop af
+ jp po,lat_down_masked
+ ei
+lat_down_masked:
+ ret
+_lat_reset:
+ ld a,i
+ push af
+ di
+ ld hl,0
+ in0 l,(132)
+ in0 h,(133)
+ ld (_irq_last),hl
+ ld hl,0
+ ld (_irq_count),hl
+ ld (_irq_max_gap),hl
+ ld (_key_count),hl
+ ld (_key_coalesced),hl
+ xor a
+ ld (_key_pending),a
+ pop af
+ jp po,lat_reset_masked
+ ei
+lat_reset_masked:
+ ret
+; delta16=(old-new) modulo65536. Inputs are zero-extended16-bit values.
+lat_delta:
+ or a
+ sbc hl,de
+ ret nc
+ ld bc,65536
+ add hl,bc
+ ret
+_lat_timer_isr:
+ di
+ push af
+ push bc
+ push de
+ push hl
+ in0 a,(134)
+ bit 7,a
+ jr z,lat_irq_end
+ ld de,0
+ in0 e,(132)
+ in0 d,(133)
+ ld hl,(_irq_last)
+ ld (_irq_last),de
+ call lat_delta
+ push hl
+ ld de,(_irq_max_gap)
+ or a
+ sbc hl,de
+ pop hl
+ jr c,lat_irq_count
+ ld (_irq_max_gap),hl
+lat_irq_count:
+ ld hl,(_irq_count)
+ inc hl
+ ld (_irq_count),hl
+lat_irq_end:
+ pop hl
+ pop de
+ pop bc
+ pop af
+ ei
+ reti.l
+; Invoked by MOS with keyboard packet inDE, before public key state update.
+; No output/syscalls, indexes, shadow registers or MBASE changes.
+_lat_keyboard:
+ push af
+ push de
+ push hl
+ ld a,(_observing)
+ or a
+ jr z,lat_key_end
+ ld hl,(_key_count)
+ inc hl
+ ld (_key_count),hl
+ ld a,(_key_pending)
+ or a
+ jr z,lat_key_first
+ ld hl,(_key_coalesced)
+ inc hl
+ ld (_key_coalesced),hl
+ jr lat_key_end
+lat_key_first:
+ ld hl,0
+ in0 l,(132)
+ in0 h,(133)
+ ld (_key_stamp),hl
+ ld a,1
+ ld (_key_pending),a
+lat_key_end:
+ pop hl
+ pop de
+ pop af
+ ret
+; Return age of the first pending delivered event and retire that latch atomically.
+_lat_key_poll:
+ ld a,i
+ push af
+ di
+ ld hl,0
+ ld a,(_key_pending)
+ or a
+ jr z,lat_key_poll_end
+ xor a
+ ld (_key_pending),a
+ ld de,0
+ in0 e,(132)
+ in0 d,(133)
+ ld hl,(_key_stamp)
+ call lat_delta
+lat_key_poll_end:
+ pop af
+ jp po,lat_key_poll_masked
+ ei
+lat_key_poll_masked:
+ ret
