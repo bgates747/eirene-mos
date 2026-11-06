@@ -15,7 +15,7 @@ Private experimental use pending the RFC merge. No physical flash/card write.
 LAT-001 [x] Record scope, source/ROM identity, build/runtime limits and meaningful
 controls before implementation. No permanent CTS stall or additional MOS guards.
 
-LAT-002 [ ] Build a directly runnable C/assembly `test` with identical synchronous
+LAT-002 [x] Build a directly runnable C/assembly `test` with identical synchronous
 and RFC25 asynchronous packets. Exercise ordinary stock VDP C3 VSync waits of
 0/1/4/8 frames before an8KiB upload, using the existing positive/negative receiver
 byte comparator. Repeat packets during a finite one-second observation window;
@@ -23,7 +23,7 @@ verify the final receiver contents outside timing and every model wire packet
 independently. One producer/borrow, prearmed flag-only callback; explicit TEMT
 before ordinary output or reuse at packet boundary. Record callback/RX/return.
 
-LAT-003 [ ] Reuse inactive PRT1 as a polling72kHz down-counter (wrap0.91s) and
+LAT-003 [x] Reuse inactive PRT1 as a polling72kHz down-counter (wrap0.91s) and
 PRT2 as a1ms service interrupt. No high-rate wrap ISR whose ticks can disappear
 inside a133ms DI pause. Report maximum timer-service and foreground-observation
 gaps; compare serviced VBlank progress. Record overflow assumptions and elapsed
@@ -34,7 +34,7 @@ keyboard callback. Tiny assembly keyboard callback latches events/timestamps;
 restore null callback after drain. Measure ISR-delivery-to-foreground latency,
 not unobservable physical key-to-ISR latency. No keys means NOT TESTED.
 
-LAT-004 [ ] Compile the fixture and source/host oracles through Pi serial FIFO;
+LAT-004 [x] Compile the fixture and source/host oracles through Pi serial FIFO;
 use existing pinned AgonDev library/toolchain.600s whole job,180s/child, serial,
 80C/512MiB stop, retain logs/source hashes/map and owned teardown/release. No
 heavy test/emulator on Pi. First source/build error stops that attempt; correct
@@ -68,3 +68,20 @@ PKG-002 [ ] Prepare a short current README, source/binary/pin package, sequentia
 logs and explicit expected duration for Brandon's later Console8 run. No physical
 run/deployment implied by source completion; keep receiver identity explicit.
 Stop before firmware alteration, broad app migration or new release publication.
+
+## First campaign disposition
+
+LAT-005 was executed through both engines, but stays OPEN: JIT passes the selected
+checks; interpreter reports16 RX overruns. Both guests complete and restore,
+all outbound bytes match. See [latency-findings.md](latency-findings.md). No
+firmware patch/retry is selected; actual hardware applicability remains open.
+PER-001/PER-002 remain next work, not secretly satisfied by shorter transfer
+windows. Package the finite latency fixture for a later separately selected
+manual check; no SD deployment or firmware action has occurred.
+
+A verified private package is ready at
+`build/rfc001/lat001-console8.zip` (source/binary/unchanged MOS/source/SDK/README),
+recorded in latency-package.json. It is not on the card and does not certify
+latency. The experimental fixture and source tools are committed atca9508d.
+No device or test firmware has been changed. Source-only Extender hook advice
+was answered separately; no RST-hook implementation was started.

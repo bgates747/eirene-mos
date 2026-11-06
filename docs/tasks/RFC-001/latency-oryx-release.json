@@ -1,0 +1,34 @@
+{
+  "owner": "agon-mos",
+  "task": "RFC001-LAT001",
+  "purpose": "Two finite RC3 sync-async responsiveness model cells, real PS2 input, exact packet verification;300s each",
+  "profile": "/home/smith/Agon/mystuff/eirene-mos/.emulator/rfc001-lat001",
+  "notify_thread": "01a132e0-4787-7310-93e9-f5248ffb2ff8",
+  "notify_host": "remote-ssh-discovered:raspberrypi",
+  "request": "f1dce4343d82",
+  "requested": "2026-11-06T03:56:04.974219+00:00",
+  "lease": "97669623b2ae4068b7c336fea72ae037",
+  "generation": 326,
+  "checked_out": "2026-11-06T03:56:20.736928+00:00",
+  "idle_observation": {
+    "machine": "oryx-linuxlite",
+    "epoch": 1793937380.6322496,
+    "emulators": []
+  },
+  "released": "2026-11-06T03:59:08.056959+00:00",
+  "release_observation": {
+    "machine": "oryx-linuxlite",
+    "epoch": 1793937547.9871519,
+    "emulators": []
+  },
+  "next_request": {
+    "owner": "nurples",
+    "task": "UART-001-RC3-HUMAN-R01",
+    "purpose": "Stopped RC3 UART-001 human review; Author launches profile, visual three-mode packet parity and repeated RUN; no agent GUI launch",
+    "profile": "/home/smith/Agon/mystuff/nurples-repair/.emulator/uart001-rc3",
+    "notify_thread": "019fc0a7-f33a-7160-a663-427af9394e01",
+    "notify_host": "remote-ssh-discovered:raspberrypi",
+    "request": "1cc79fdde111",
+    "requested": "2026-11-06T03:58:43.463094+00:00"
+  }
+}

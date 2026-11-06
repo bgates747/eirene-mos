@@ -1,0 +1,18 @@
+{
+  "owner": "agon-mos",
+  "task": "RFC001-LAT001",
+  "purpose": "Two finite RC3 sync-async responsiveness model cells, real PS2 input, exact packet verification;300s each",
+  "profile": "/home/smith/Agon/mystuff/eirene-mos/.emulator/rfc001-lat001",
+  "notify_thread": "01a132e0-4787-7310-93e9-f5248ffb2ff8",
+  "notify_host": "remote-ssh-discovered:raspberrypi",
+  "request": "f1dce4343d82",
+  "requested": "2026-11-06T03:56:04.974219+00:00",
+  "lease": "97669623b2ae4068b7c336fea72ae037",
+  "generation": 326,
+  "checked_out": "2026-11-06T03:56:20.736928+00:00",
+  "idle_observation": {
+    "machine": "oryx-linuxlite",
+    "epoch": 1793937380.6322496,
+    "emulators": []
+  }
+}

@@ -184,6 +184,10 @@ The RC3 responsiveness/performance continuation is now authorized; its finite
 implementation and execution gates are in [second-tranche.md](second-tranche.md).
 This does not grant physical deployment or another release.
 
+The first responsiveness campaign completed its guest checks in both engines,
+but interpreter reports16 modeled UART RX overruns. The qualification remains
+OPEN; see [latency-findings.md](latency-findings.md). No firmware fix selected.
+
 ABI-002 [ ] Qualify registers/stack, RX/keyboard coexistence and finite CTS pauses
 under realistic graphics/audio traffic. Distinguish source release, TEMT and
 receiver acknowledgement. Isolate any deliberately invalid-contract probes with

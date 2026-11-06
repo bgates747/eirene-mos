@@ -1,0 +1,10 @@
+{
+  "path": "/Agon/mystuff/eirene-mos/build/rfc001/lat001-console8.zip",
+  "bytes": 1409995,
+  "sha256": "5bc4075564cb3b89b3ee0af14874cc784ce1a7e8704016ee5f0c0fc0d6ef4336",
+  "fixture_source_commit": "ca9508d83720d1b95e745a10e9082cfc1091b764",
+  "fixture_sha256": "17e74eea2dc0deaf16ab042a7ca1dc87802f827410336ce126535730871dad46",
+  "mos_sha256": "d7a51147f3381cd68d56f3fbe4605434a897dfae1b049269afeba09ec2b7eb50",
+  "deployed": false,
+  "hardware_run": false
+}

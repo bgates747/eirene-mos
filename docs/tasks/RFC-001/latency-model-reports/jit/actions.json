@@ -1,0 +1,162 @@
+[
+  {
+    "seconds": 7.799889939997229,
+    "case": 1,
+    "command": "key 1c 1"
+  },
+  {
+    "seconds": 7.840835294999124,
+    "case": 1,
+    "command": "key 1c 0"
+  },
+  {
+    "seconds": 7.922470846002398,
+    "case": 1,
+    "command": "key 1c 1"
+  },
+  {
+    "seconds": 7.96344161000161,
+    "case": 1,
+    "command": "key 1c 0"
+  },
+  {
+    "seconds": 11.572381555997708,
+    "case": 2,
+    "command": "key 1c 1"
+  },
+  {
+    "seconds": 11.616323864000151,
+    "case": 2,
+    "command": "key 1c 0"
+  },
+  {
+    "seconds": 11.681327867001528,
+    "case": 2,
+    "command": "key 1c 1"
+  },
+  {
+    "seconds": 11.746847975999117,
+    "case": 2,
+    "command": "key 1c 0"
+  },
+  {
+    "seconds": 15.326270233999821,
+    "case": 3,
+    "command": "key 1c 1"
+  },
+  {
+    "seconds": 15.371426675999828,
+    "case": 3,
+    "command": "key 1c 0"
+  },
+  {
+    "seconds": 15.439004264000687,
+    "case": 3,
+    "command": "key 1c 1"
+  },
+  {
+    "seconds": 15.484240215002501,
+    "case": 3,
+    "command": "key 1c 0"
+  },
+  {
+    "seconds": 18.95538222900359,
+    "case": 4,
+    "command": "key 1c 1"
+  },
+  {
+    "seconds": 19.002819768997142,
+    "case": 4,
+    "command": "key 1c 0"
+  },
+  {
+    "seconds": 19.07400515700283,
+    "case": 4,
+    "command": "key 1c 1"
+  },
+  {
+    "seconds": 19.12154507500236,
+    "case": 4,
+    "command": "key 1c 0"
+  },
+  {
+    "seconds": 22.58865818200138,
+    "case": 5,
+    "command": "key 1c 1"
+  },
+  {
+    "seconds": 22.638616557000205,
+    "case": 5,
+    "command": "key 1c 0"
+  },
+  {
+    "seconds": 22.712591789997532,
+    "case": 5,
+    "command": "key 1c 1"
+  },
+  {
+    "seconds": 22.762633855003514,
+    "case": 5,
+    "command": "key 1c 0"
+  },
+  {
+    "seconds": 26.337926056003198,
+    "case": 6,
+    "command": "key 1c 1"
+  },
+  {
+    "seconds": 26.389677170998766,
+    "case": 6,
+    "command": "key 1c 0"
+  },
+  {
+    "seconds": 26.440504582002177,
+    "case": 6,
+    "command": "key 1c 1"
+  },
+  {
+    "seconds": 26.49225449700316,
+    "case": 6,
+    "command": "key 1c 0"
+  },
+  {
+    "seconds": 30.08991835600318,
+    "case": 7,
+    "command": "key 1c 1"
+  },
+  {
+    "seconds": 30.14286469399667,
+    "case": 7,
+    "command": "key 1c 0"
+  },
+  {
+    "seconds": 30.19482940799935,
+    "case": 7,
+    "command": "key 1c 1"
+  },
+  {
+    "seconds": 30.247082490997855,
+    "case": 7,
+    "command": "key 1c 0"
+  },
+  {
+    "seconds": 33.8317369610013,
+    "case": 8,
+    "command": "key 1c 1"
+  },
+  {
+    "seconds": 33.85925595000299,
+    "case": 8,
+    "command": "key 1c 0"
+  },
+  {
+    "seconds": 33.939974116001395,
+    "case": 8,
+    "command": "key 1c 1"
+  },
+  {
+    "seconds": 33.9945162360018,
+    "case": 8,
+    "command": "key 1c 0"
+  }
+]

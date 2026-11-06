@@ -1,0 +1,38 @@
+LAT1 build=8ade3b7bc9b95350 MOS=B08C80B8 report=R0001 tick_hz=72000 interval_limit=65535; model timing is not hardware timing
+Clock PRT1 polling; PRT2 nominal1ms IRQ. Keyboard age starts at MOS callback delivery, not physical keypress.
+Comparator wrong-byte FAIL / correct-byte PASS
+LAT BEGIN case=1 mode=0 pause=0; one-second window, then byte check
+LAT case=1 mode=0 pause=0 packets=14 payload=114688 wire=118468 ticks=75145 vtime=82 callbacks=0 irq_count=1043 irq_gap=73 fore_gap=5640 keys=4 coalesced=1 key_age=4103 cts_low_samples=0 early_rx_samples=28
+VERIFY8192 PASS
+LAT CASE PASS
+LAT BEGIN case=2 mode=1 pause=0; one-second window, then byte check
+LAT case=2 mode=1 pause=0 packets=14 payload=114688 wire=118468 ticks=75261 vtime=76 callbacks=14 irq_count=1039 irq_gap=260 fore_gap=260 keys=4 coalesced=0 key_age=3 cts_low_samples=50 early_rx_samples=31581
+VERIFY8192 PASS
+LAT CASE PASS
+LAT BEGIN case=3 mode=0 pause=1; one-second window, then byte check
+LAT case=3 mode=0 pause=1 packets=12 payload=98304 wire=101580 ticks=72808 vtime=80 callbacks=0 irq_count=1011 irq_gap=73 fore_gap=7332 keys=4 coalesced=1 key_age=5127 cts_low_samples=0 early_rx_samples=24
+VERIFY8192 PASS
+LAT CASE PASS
+LAT BEGIN case=4 mode=1 pause=1; one-second window, then byte check
+LAT case=4 mode=1 pause=1 packets=12 payload=98304 wire=101580 ticks=73660 vtime=82 callbacks=12 irq_count=905 irq_gap=1579 fore_gap=1537 keys=4 coalesced=0 key_age=3 cts_low_samples=68 early_rx_samples=27109
+VERIFY8192 PASS
+LAT CASE PASS
+LAT BEGIN case=5 mode=0 pause=4; one-second window, then byte check
+LAT case=5 mode=0 pause=4 packets=7 payload=57344 wire=59318 ticks=77803 vtime=84 callbacks=0 irq_count=1080 irq_gap=73 fore_gap=11769 keys=4 coalesced=2 key_age=6851 cts_low_samples=0 early_rx_samples=15
+VERIFY8192 PASS
+LAT CASE PASS
+LAT BEGIN case=6 mode=1 pause=4; one-second window, then byte check
+LAT case=6 mode=1 pause=4 packets=7 payload=57344 wire=59318 ticks=76613 vtime=66 callbacks=7 irq_count=531 irq_gap=5938 fore_gap=5888 keys=4 coalesced=1 key_age=8 cts_low_samples=50 early_rx_samples=15823
+VERIFY8192 PASS
+LAT CASE PASS
+LAT BEGIN case=7 mode=0 pause=8; one-second window, then byte check
+LAT case=7 mode=0 pause=8 packets=5 payload=40960 wire=42430 ticks=86134 vtime=102 callbacks=0 irq_count=1196 irq_gap=73 fore_gap=18135 keys=4 coalesced=3 key_age=16715 cts_low_samples=0 early_rx_samples=11
+VERIFY8192 PASS
+LAT CASE PASS
+LAT BEGIN case=8 mode=1 pause=8; one-second window, then byte check
+LAT case=8 mode=1 pause=8 packets=5 payload=40960 wire=42430 ticks=89710 vtime=42 callbacks=5 irq_count=381 irq_gap=12935 fore_gap=12919 keys=4 coalesced=1 key_age=8 cts_low_samples=42 early_rx_samples=11330
+VERIFY8192 PASS
+LAT CASE PASS
+LAT RESTORE PASS: vectors, disabled timer controls/source and null keyboard callback
+LIMIT: write-only reloads not restorable; next timer owner must configure them. Last-buffer receiver check; model oracle checks every wire packet.
+RC3 LATENCY PASS
