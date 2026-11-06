@@ -171,7 +171,7 @@ questions in feedback.md; revise this plan with explicit dispositions.
 PLAN-004 [x] Send the refined plan to all eight owners for review, then stop for
 Smith's review. Record actual delivery and reply state, not acceptance by inference.
 
-## Proposed implementation tranche — deferred until review
+## Implementation tranches
 
 ABI-001 [x] Make a minimal command-line appliance and worked ADL callback example;
 prove source order, exactly one completion, immediate-completion flag arming,
@@ -179,6 +179,10 @@ normal output after drain and repeat invocation. Include lengths 1/15/16/17,
 255/256/257, 1024 and valid large spans. Preserve expected/actual byte checks,
 not just sender callback counts. Reuse existing fixtures rather than building
 another framework. A classic/Z80 case follows only after the bank contract is clear.
+
+The RC3 responsiveness/performance continuation is now authorized; its finite
+implementation and execution gates are in [second-tranche.md](second-tranche.md).
+This does not grant physical deployment or another release.
 
 ABI-002 [ ] Qualify registers/stack, RX/keyboard coexistence and finite CTS pauses
 under realistic graphics/audio traffic. Distinguish source release, TEMT and
