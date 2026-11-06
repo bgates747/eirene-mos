@@ -1,3 +1,5 @@
+Historical RC1/RC2 fixture; not the RC3 ABI. See experiments/uart0-rfc.
+
 # Preparing Eirene UART0 RC1
 
 This recipe builds the selected minimal OTIRX firmware with its RC banner,

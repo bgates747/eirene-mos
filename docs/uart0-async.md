@@ -1,85 +1,36 @@
-# Using the RC2 asynchronous UART0 sender
+# RC3 caller contract — RFC syscall25h
 
-Give MOS one immutable buffer, then continue foreground work. MOS services TX
-interrupts with up to16-byte OTIRX refills and a software CTS check per block.
-Incoming VDP/keyboard replies continue through MOS. Normal startup and RST18
-remain unchanged; applications explicitly use this fork-local interface.
+**Breaking from RC2:**25h replaces42h/43h. No implicit queue, BUSY result, null
+callback support, cancellation or finish syscall is supplied. The raw RFC returns
+an IER-derived A value despite its A=0 comment; callers must not use A as admission
+status. The startup fix changes no transport semantics.
 
-RC2 is the smaller successor to RC1. Published RC1 remains the verified guarded
-alternative, with extra context/ownership checks and callback register saves.
-Do not assume RC1's stronger guarantees on RC2. No upstream syscall allocation
-is claimed. Use only firmware matching your application's declared contract.
+Call from one foreground ADL application with actual MB0 and interrupts enabled.
+HL is a positive contiguous immutable source; BC is its full24-bit byte length;
+DE is a non-null ADL assembly callback returning with RET. Do not submit again
+while another source is borrowed. No callback/source may be freed on a timeout.
 
-| RST.LIL08h A | Operation | Inputs |
-| --- | --- | --- |
-|42h|Submit one borrowed buffer|HL=source, BC=positive24-bit length, DE=callback or0|
-|43h|Try to finish and release ownership|none|
+Arm the completion flag before invoking RST.LIL08h with A=25h. The UART0 ISR
+fills at most16 bytes with OTIRX after checking CTS. WAIT_CTS spins under DI;
+normal receiver backpressure can delay RX, keyboard, VBlank and timer service.
+There is no bounded-latency or stuck-receiver recovery promise.
 
-A returns0=OK,1=BUSY,2=INVALID. Input primary registers, IX/IY and alternate banks
-are preserved by the calls; flags are unspecified. A rejected write accepts no
-source. Positive24-bit lengths, final partial blocks and NULL callbacks work.
-One buffer may be outstanding; there is no queue or implicit app-exit cleanup.
+The callback runs under DI after the last source byte is copied into the FIFO.
+Primary AF/BC/DE/HL are saved by MOS; preserve IX/IY/alternate registers and MB
+if used. Use a tiny flag-store assembly leaf; no MOS, C runtime, wait, VDU,
+allocation or recursive submission. A generic C function needs a separately
+correct register/stack bridge; this example does not pretend otherwise.
 
-## Caller requirements
+After observed callback, source RAM may be reused. Poll UART0 LSR bit6 (TEMT)
+before ordinary VDU/query output, application exit, or the conservative next
+packet boundary used by our example. TEMT does not prove the VDP executed a
+command: use its normal ordered reply/fence where required. Finish receiver
+ownership before freeing command inputs or changing modes/routes.
 
-Call in foreground ADL1/MBASE0 with interrupts enabled, normal MOS UART setup
-and sole UART0 ownership. RC2 no longer validates those assumptions or returns
-CONTEXT3. Finish before printf, RST18, SD operations that print, returning, or
-replacing UART handlers. Do not use a scheduling ISR as another UART producer.
-Keep an accepted source immutable and its data/callback code alive until release.
-A timeout does not authorize freeing accepted storage or returning.
+Ordinary RST10/RST18 keep synchronous behavior. Applications that never issue
+25h keep the established output path. Unsupported caller contexts and zero,
+null or overlapping submissions are outside the RFC's valid-caller contract.
 
-Arm completion state BEFORE submission: even a short source can finish before
-the next foreground instruction. Completion means source bytes have entered the
-FIFO, not that the wire drained or VDP executed commands. Finish additionally
-waits nonblockingly for local transmitter-empty and restores the stock handler.
-Use an appropriate VDP reply/fence when receiver execution matters.
-
-## C recipe
-
-The package's example/ is a complete working template. Its u0_submit/u0_finish
-bridge takes C arguments and loads the register ABI. Its fixed-target assembly
-callback gate preserves IX/IY/alternate banks around the C callback. The raw MOS
-callback preserves AF/BC/DE/HL only. Each C callback needs its own gate symbol;
-never overwrite a mutable dispatch slot on a write that might return BUSY.
-
-```c
-static volatile uint8_t released;
-void complete(void) { released = 1; }
-extern void complete_gate(void); /* fixed assembly gate calls complete */
-
-released = 0;
-uint8_t rc = u0_submit(buffer, length, complete_gate);
-if (rc == U0_OK) {
-    while (!released) useful_work();
-    while (u0_finish() == U0_BUSY) useful_work();
-    /* Now ordinary output and normal return are permitted. */
-}
-```
-
-The example includes the full return-status handling and exact-ROM guard.
-The bridge uses private argument globals and is single-foreground-caller code,
-not a reentrant/ISR-safe general library. Copy/adapt its .c/.src/.h/.inc files
-and retain the gate's explicit ADL1 declaration. The optional gate costs29bytes;
-a raw assembly callback can instead preserve only the extra registers it uses.
-
-Callbacks run DI on the interrupt stack. They may post flags/counters and return;
-no output, MOS calls, allocation, waiting, EI or nested submission. Raw callbacks
-must preserve IX/IY/alternate banks if touched and retain ADL1/MBASE0. Input-only
-keyboard hooks may remain installed under the same ISR restrictions.
-
-## Worked tests and build
-
-The release ZIP contains full frozen MOS source, matching generated functional
-and C-example sources, plus separate stock/RC1/RC2 PERF2 program sources and
-binaries. They are recipes for receiver comparison, work overlap, pacing and
-PRT timing as well as regression tests. See the ZIP's root README for commands,
-identities, installation, expected PASS markers and interpretation of metrics.
-Eirene and these original apps use AgonDev with the pinned compiler/libraries.
-No private VDP protocol is needed. Stock Bistromathics2.16.0 was used for the
-matched physical comparison. RC2 branding is the only MOS change afterward;
-see the release build record rather than assuming exact branded-image testing.
-
-Based on Tom Morton's Eirene and supplied async_vdu.asm. Original reference,
-hashes, attribution and historical audits remain in docs/tasks/TM-001/. Preserve
-all original MOS/FatFS/library notices and the project's MIT license.
+Pinned RFC:ffab9c9c84a31535d1ec976b7e6f23b2579ecb80, PR2.
+Our startup correction is PR3; unpatched RFC still erases45 default vectors.
+The original RC1/RC2 contract is retained under docs/archive for reference.

@@ -1,3 +1,5 @@
+Historical RC1/RC2 fixture; not the RC3 ABI. See experiments/uart0-rfc.
+
 # Five no-argument UART measurement fixtures
 
 Build five original AgonDev C apps against the same compiled measurement core.

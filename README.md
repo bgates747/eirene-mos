@@ -1,45 +1,33 @@
-# Eirene MOS — UART0 development
+# Eirene MOS — UART0 RC3
 
-This fork adds an opt-in asynchronous VDP sender based on Tom Morton's small
-candidate, with interrupt-driven16-byte OTIRX refills. An aware application can
-calculate while MOS transmits its borrowed buffer. Ordinary startup and RST18
-remain upstream Eirene paths; legacy applications retain synchronous output.
+Applications can calculate while MOS sends their buffer to the VDP using Tom
+Morton's proposed interrupt-driven UART0 sender and 16-byte OTIRX refills.
 
-**Candidate: Eirene MOS3.1.0 UART0 RC2**, the smaller implementation based on
-upstream3.1.0_beta_1. RC1 remains the verified, more guarded alternative; its
-tag, binaries and evidence are preserved. RC2 trusts documented caller context
-and moves extra C callback register saves into an app-side gate.
-[RC2 prerelease](https://github.com/bgates747/eirene-mos/releases/tag/3.1.0_uart0_rc_2);
-[RC1 prerelease](https://github.com/bgates747/eirene-mos/releases/tag/3.1.0_uart0_rc_1).
-Both remain on codex/uart0-async; main tracks upstream.
+**BREAKING ABI CHANGE FROM RC2:** RC3 uses syscall `25h` from
+[Tom's RFC](https://github.com/AgonPlatform/eirene-mos/pull/2), pinned to
+`ffab9c9c84a31535d1ec976b7e6f23b2579ecb80`. The fork-local `42h`/`43h` API
+is unavailable. Existing clients use startup-fixed RC1.1/RC2.1 or migrate.
 
-The trimmed implementation passed the matched Console8 stock-VDP comparison:
-[results](docs/tasks/TR-001/hardware-results.md). It retains about86% of the
-no-traffic foreground calculation rate while sending flat out and completes
-64.6% more work than official stock MOS during paced sending. Its sender has
-286 instruction bytes versus RC1's476; the C gate costs29 app bytes. Bulk speed
-is essentially unchanged. These are calculation-capacity measurements, not
-exclusive CPU profiling. RC2 branding is the only MOS change after that run;
-its sender and other checked objects are identical to the qualified image.
+**THE PINNED RFC STILL HAS THE STARTUP BUG.** This RC3 includes the separate
+[interrupt-table startup correction](https://github.com/AgonPlatform/eirene-mos/pull/3).
+The RFC alone initializes defaults before BSS clearing and then erases them.
+Our first source commit fixes startup; the second replaces the old transport.
 
-The pre-branding implementation passed the five-MOS Console8 comparison:
-[physical results](docs/tasks/TM-001/hardware-perf2-r01.md). It kept85.5% of the
-fixture's no-traffic foreground calculation rate while sending flat out, at
-essentially stock payload throughput. This is useful calculation overlap, not
-an exclusive CPU-utilization measurement or a bulk-speed improvement claim.
-Three short repeats per scenario do not establish indefinite sustained rates.
+This is an experimental fork prerelease, not an upstream or stable release.
+Main and original RC1/RC2 tags/assets remain unchanged. RC1.1/RC2.1 preserve
+those clients' ABI and only correct startup; their ROM checksums distinguish
+the refreshes despite unchanged RC1/RC2 on-screen branding.
 
-[Caller contract](docs/uart0-async.md), [original C example](examples/uart0-async/)
-and [no-argument regression fixture](experiments/uart0-release/).
-The async syscall is fork-local; no upstream ABI allocation is implied.
-Only Console8 and the documented Flexe configurations are covered by our
-qualification. EMOS, other boards and real application audio deadlines remain
-separate work. The transport uses ordinary VDP commands; its sender adds no
-VDP protocol extension. The exact RC passed two focused regression runs on stock Bistromathics VDP
-2.16.0. Earlier performance benchmarks used the matched receiver-fixed VDP;
-their timings are not stock-VDP measurements. See the
-[final hardware record](docs/tasks/RC-001/hardware.md). The separate receiver
-fix remains independent of this sender.
+Read the [caller contract](docs/uart0-async.md), the
+[small C/assembly example](examples/uart0-async/) and the
+[functional fixture](experiments/uart0-rfc/README.md). Ordinary RST10/RST18
+remain synchronous. No custom VDP commands or modified VDP are required.
+RC3's callback means source release, not physical drain or receiver execution.
+Tom's CTS wait inside the ISR is retained and can delay other interrupts.
+
+Earlier RC1/RC2 performance numbers describe those implementations, not a new
+RC3 performance result. Exact source, tools, image IDs and qualification scope
+are recorded in each downloadable package. EMOS integration is separately owned.
 
 Part of the official Agon Platform organisation firmware for all Agon computers.
 

@@ -1,0 +1,29 @@
+.assume adl=1
+.text
+.global _example_submit,_example_context,_example_lsr
+.extern _example_source,_example_length,_example_done
+_example_submit:
+ ld hl,(_example_source)
+ ld bc,(_example_length)
+ ld de,example_callback
+ ld a,025h
+ rst.lil 08h
+ ret
+example_callback:
+ ld a,1
+ ld (_example_done),a
+ ret
+_example_lsr:
+ in0 a,(0c5h)
+ ret
+_example_context:
+ ld a,mb
+ or a
+ ret nz
+ ld a,i
+ jp po,example_bad_context
+ xor a
+ ret
+example_bad_context:
+ ld a,1
+ ret

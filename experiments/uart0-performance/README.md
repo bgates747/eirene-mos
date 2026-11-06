@@ -1,3 +1,5 @@
+Historical RC1/RC2 fixture; not the RC3 ABI. See experiments/uart0-rfc.
+
 # Eirene controlled performance fixture
 
 Original C/AgonDev application, with small timer and syscall assembly bridges.

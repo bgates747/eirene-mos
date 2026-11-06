@@ -1,26 +1,23 @@
-/* Original AgonDev example: callback posts state; foreground does work. */
+/* Prepared for Brandon. MIT. Tom Morton RFC25 single-buffer recipe. */
 #include <agon/mos.h>
 #include <stdint.h>
 #include <stdio.h>
-#include "uart0_async.h"
-#include "identity.h"
-#include "rom_crc.h"
-static volatile uint8_t released;
-extern void complete_gate(void);
-void complete(void){released=1;}
-static uint32_t state=0x12345678UL,work_count;
-static void useful_work(void){state^=state<<13;state^=state>>17;state^=state<<5;work_count++;}
+extern void example_submit(void);
+extern uint8_t example_context(void),example_lsr(void);
+const uint8_t *example_source;
+uint24_t example_length;
+volatile uint8_t example_done;
+static const uint8_t message[]="RC3 asynchronous message: foreground work overlaps UART0.\r\n";
 int main(void){
- if(installed_crc(RC_MOS_BYTES)!=RC_MOS_CRC){puts("Wrong MOS for RC2 example; no async call made.");return 1;}
- static const char text[]="Asynchronous VDP output from the RC2 C example.\r\n";
- released=0; /* MUST precede submission, even with a short source. */
- uint8_t rc;
- do{rc=u0_submit(text,sizeof text-1,complete_gate);}while(rc==U0_BUSY);
- if(rc!=U0_OK)return 1; /* No source accepted on an error. */
- while(!released)useful_work();
- /* Source consumed is not wire drain: finish before any ordinary output. */
- while((rc=u0_finish())==U0_BUSY)useful_work();
- if(rc!=U0_OK)for(;;){} /* Preserve source/callback storage on uncertain teardown. */
- printf("RC2 EXAMPLE PASS; work=%lu state=%08lX\n",(unsigned long)work_count,(unsigned long)state);
+ if(example_context()){puts("RC3 EXAMPLE REFUSED: require ADL/actualMB0/EI");return 1;}
+ putch(12);puts("RC3 RFC25 EXAMPLE: should finish immediately; a stall is failure.");
+ while(!(example_lsr()&0x40)){}
+ example_source=message;example_length=sizeof message-1;example_done=0;
+ example_submit();
+ volatile uint32_t work=0;uint32_t checksum=0;
+ while(!example_done){work++;checksum=checksum*33u+work;}
+ /* Release is not drain. Keep callbacks resident and serialize ordinary output. */
+ while(!(example_lsr()&0x40)){}
+ printf("RC3 EXAMPLE PASS work=%lu checksum=%lu\n",(unsigned long)work,(unsigned long)checksum);
  return 0;
 }

@@ -1,3 +1,5 @@
+Historical RC1/RC2 fixture; not the RC3 ABI. See experiments/uart0-rfc.
+
 # Minimal Eirene UART0 validation
 
 This finite fixture invokes Eirene's new experimental42h/43h syscalls. It is

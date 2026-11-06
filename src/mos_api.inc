@@ -297,6 +297,6 @@ MOSCALL:		MACRO	function
 			RST.LIS	08h
 			ENDMACRO 	
 
-; Experimental Eirene single-buffer UART0 API; see TM-001 contract.
-mos_async_vdu_write:	EQU	42h
-mos_async_vdu_finish:	EQU	43h
+; Tom Morton RFC syscall; positive immutable source, non-null assembly callback.
+; Callback releases source after last FIFO fill, before TEMT/receiver completion.
+mos_uart0_async_send: EQU 25h

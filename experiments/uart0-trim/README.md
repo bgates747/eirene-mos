@@ -1,3 +1,5 @@
+Historical RC1/RC2 fixture; not the RC3 ABI. See experiments/uart0-rfc.
+
 # Smaller UART0 trial
 
 TRIM Trial1 keeps background, interrupt-driven OTIRX sending and stock-style

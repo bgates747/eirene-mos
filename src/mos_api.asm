@@ -30,7 +30,6 @@
 
 			.text
 			XDEF	mos_api
-			XREF	uart0_async_write,uart0_async_finish
 
 			XREF	SWITCH_A		; In misc.asm
 			XREF	SET_AHL24
@@ -81,6 +80,7 @@
 
 			XREF	_open_UART1		; In uart.c
 			XREF	_close_UART1
+			XREF	uart0_async_send
 
 			XREF	UART1_serial_GETCH	; In serial.asm
 			XREF	UART1_serial_PUTCH
@@ -195,8 +195,8 @@ mos_api_block1_start:	DW	mos_api_getkey		; 0x00
 			DW	mos_api_i2c_read	; 0x22
 			DW	mos_api_unpackrtc	; 0x23
 			DW	mos_api_flseek_p	; 0x24
+			DW	mos_api_uart0_async_send; 0x25
 
-			DW	mos_api_not_implemented	; 0x25
 			DW	mos_api_not_implemented	; 0x26
 			DW	mos_api_not_implemented	; 0x27
 
@@ -228,8 +228,8 @@ mos_api_block1_start:	DW	mos_api_getkey		; 0x00
 
 			DW	mos_api_clear_vdp_flags	; 0x40
 			DW	mos_api_wait_vdp_flags	; 0x41
-			DW	uart0_async_write	; 0x42 experimental UART0
-			DW	uart0_async_finish	; 0x43 experimental UART0
+			DW	mos_api_not_implemented	; 0x42
+			DW	mos_api_not_implemented	; 0x43
 			DW	mos_api_not_implemented	; 0x44
 			DW	mos_api_not_implemented	; 0x45
 			DW	mos_api_not_implemented	; 0x46
@@ -1070,6 +1070,19 @@ mos_api_flseek_p:	CALL	FIX_HLU24	; Fix the HLU to ensure it's a 24-bit pointer
 			POP	HL
 			RET
 
+; Asynchronously write data to UART0 (TX interrupt based)
+;   HL: data pointer
+;   DE: completion callback
+;   BC: data length bytes
+; Returns:
+;   A: zero
+; Will return immediately, and the callback (de) will be called once transfer completes.
+; The callback must preserve IX,IY but may stomp other registers.
+; In Z80-mode the callback must return with `ret.lis`.
+mos_api_uart0_async_send:
+			CALL FIX_HLU24
+			CALL uart0_async_send
+			RET
 
 ; MOS String functions
 ;
