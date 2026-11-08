@@ -28,7 +28,7 @@
 			XREF	UART0_serial_TX
 			XREF	fill_uart0_tx_fifo
 			XREF	mos_api
-			XREF	vdp_protocol			
+			XREF	rx005_dispatch			
 			
 			XREF	_i2c_slave_rw
 			XREF	_i2c_error
@@ -77,7 +77,7 @@ _uart0_handler:		DI
 			CALL		UART0_serial_RX
 			LD		C, A		
 			LD		HL, _vdp_protocol_data
-			CALL		vdp_protocol
+			CALL		C, rx005_dispatch
 			POP		HL
 			POP		DE
 			POP		BC

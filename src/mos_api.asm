@@ -30,6 +30,7 @@
 
 			.text
 			XDEF	mos_api
+			XREF	rx005_arm
 
 			XREF	SWITCH_A		; In misc.asm
 			XREF	SET_AHL24
@@ -197,7 +198,7 @@ mos_api_block1_start:	DW	mos_api_getkey		; 0x00
 			DW	mos_api_flseek_p	; 0x24
 			DW	mos_api_uart0_async_send; 0x25
 
-			DW	mos_api_not_implemented	; 0x26
+			DW	rx005_arm		; 0x26 RX-005 private trial
 			DW	mos_api_not_implemented	; 0x27
 
 			DW	mos_api_pmatch		; 0x28
