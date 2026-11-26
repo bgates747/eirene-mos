@@ -1082,6 +1082,7 @@ mos_api_flseek_p:	CALL	FIX_HLU24	; Fix the HLU to ensure it's a 24-bit pointer
 mos_api_uart0_async_send:
 			CALL FIX_HLU24
 			CALL uart0_async_send
+			XOR	A
 			RET
 
 ; MOS String functions
